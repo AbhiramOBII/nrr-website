@@ -1,0 +1,792 @@
+@extends('layouts.app')
+
+@section('title', 'Home - N. R. Ramesh')
+@section('description', 'Welcome to N. R. Ramesh official website')
+
+@section('content')
+        <!-- Hero Slider Section -->
+        <section class="relative" aria-labelledby="slider-heading">
+            <div class="slider-container relative w-full min-h-[800px] overflow-hidden">
+                @if($sliders->count() > 0)
+                    <!-- Slide Track -->
+                    <div class="slider-track flex transition-transform duration-700 ease-in-out" id="slider-track">
+                        @foreach($sliders as $index => $slider)
+                            <div class="slide w-full flex-shrink-0 relative">
+                                <img src="{{ asset('storage/sliders/' . $slider->image) }}" alt="{{ $slider->title }}" class="w-full h-[800px] object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-header-orange/40"></div>
+                                <div class="absolute inset-0 flex items-center">
+                                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                                        <div class="text-left text-white max-w-2xl">
+                                            <h{{ $index === 0 ? '1' : '2' }} {{ $index === 0 ? 'id="slider-heading"' : '' }} class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                                                {{ $slider->title }}
+                                            </h{{ $index === 0 ? '1' : '2' }}>
+                                            <p class="text-lg md:text-xl lg:text-2xl mb-8 leading-relaxed">
+                                                {{ $slider->paragraph }}
+                                            </p>
+                                            <div class="flex flex-col sm:flex-row gap-4 items-start">
+                                                <button class="bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-opacity-90 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 transition-all duration-200 transform hover:scale-105 w-full sm:w-auto">
+                                                    {{ __('messages.learn_more') }}
+                                                </button>
+                                                <button class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 transition-all duration-200 transform hover:scale-105 w-full sm:w-auto">
+                                                    {{ __('messages.get_involved') }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    @if($sliders->count() > 1)
+                        <!-- Navigation Dots -->
+                        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+                            @foreach($sliders as $index => $slider)
+                                <button class="slider-dot w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-75 focus:outline-none focus:bg-opacity-100 transition-all duration-200 {{ $index === 0 ? 'active' : '' }}" data-slide="{{ $index }}" aria-label="Go to slide {{ $index + 1 }}"></button>
+                            @endforeach
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 transition-all duration-200" id="prevSlide" aria-label="Previous slide">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 transition-all duration-200" id="nextSlide" aria-label="Next slide">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    @endif
+                @else
+                    <!-- Default/Fallback Content when no sliders exist -->
+                    <div class="slide w-full flex-shrink-0 relative">
+                        <div class="w-full h-[800px] bg-gradient-to-r from-primary to-header-orange"></div>
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                                <div class="text-center text-white">
+                                    <h1 id="slider-heading" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                                        Welcome to N. R. Ramesh
+                                    </h1>
+                                    <p class="text-lg md:text-xl lg:text-2xl mb-8 leading-relaxed">
+                                        Committed to serving the community with dedication and transparency.
+                                    </p>
+                                    <div class="flex flex-col sm:flex-row gap-4 items-center justify-center">
+                                        <button class="bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-opacity-90 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 transition-all duration-200 transform hover:scale-105 w-full sm:w-auto">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </section>
+
+        <!-- About N.R. Ramesh Section -->
+        <section class="py-32 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    <!-- Image Column (5/12) -->
+                    <div class="lg:col-span-5">
+                        <div>
+                            <div class="w-20 h-1 bg-header-orange mb-6"></div>
+                        </div>
+                        <div class="relative">
+                            <img src="image/Hero-picture.jpg" alt="N. R. Ramesh Portrait" class="w-full h-auto rounded-lg shadow-lg object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-lg"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Column (7/12) -->
+                    <div class="lg:col-span-7">
+                        <div class="space-y-6">
+                        
+                            
+                            <div class="space-y-4 text-primary">
+                                <p class="leading-loose" style="font-size: 18px;">
+                                    N. R. Ramesh is a relentless <strong class="text-header-orange">anti-corruption crusader</strong> and a proven voice for accountable governance. As the former Ruling Party Leader of BBMP and President of Bengaluru South BJP, he has exposed over <strong class="text-header-orange">137 scams</strong>, reclaimed <strong class="text-header-orange">₹11,000+ crore</strong> worth of public land, uncovered <strong class="text-header-orange">₹4,500+ crore</strong> in BBMP revenue leakages, and filed <strong class="text-header-orange">59 PILs</strong>—winning several landmark cases in the High Court of Karnataka. His leadership was also instrumental in civic reforms such as the ban on hookah centers in Bengaluru and the regulation of the OFC cable mafia.
+                                    <br><br>
+                                    Beyond anti-corruption, Ramesh has worked to empower youth and communities. In 2024, he organized a historic mega job fair where <strong class="text-header-orange">204 companies</strong> participated, over <strong class="text-header-orange">40,000 youths</strong> attended, and thousands secured on-spot appointment orders and offer letters. His journey reflects a single belief: <strong class="text-primary font-semibold">Results over rhetoric—governance that delivers.</strong>
+                                </p>
+                            </div>
+                            
+                        
+                            
+                            <!-- Call to Action -->
+                            <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                                <button class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 transition-all duration-200 transform hover:scale-105">
+                                    Learn More About His Vision
+                                </button>
+                                <button class="bg-transparent border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 transition-all duration-200">
+                                    View Achievements
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+            <!-- Impact Counter Section -->
+            <section class="py-16 bg-white relative overflow-hidden">
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 opacity-5">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full translate-x-32 -translate-y-32"></div>
+                    <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary rounded-full -translate-x-32 translate-y-32"></div>
+                </div>
+                
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                    <div class="text-left mb-12">
+                        <h2 class="text-3xl md:text-3xl lg:text-3xl font-bold text-primary mb-4">
+                            Impact by Numbers
+                        </h2>
+                        <p class="text-primary/80 text-lg md:text-xl max-w-3xl">
+                            Measurable results that demonstrate commitment to transparent governance and public service
+                        </p>
+                        <div class="w-20 h-1 bg-header-orange mt-6"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Counter 1: Scams Exposed -->
+                        <div class="text-center group">
+                            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                                <div class="mb-4">
+                                    <i class="fi fi-rr-shield-check text-5xl text-header-orange mb-4"></i>
+                                </div>
+                                <div class="text-4xl md:text-5xl font-bold text-primary mb-2">
+                                    <span class="counter" data-target="137">0</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-primary mb-2">Scams Exposed</h3>
+                                <p class="text-primary/70 text-sm">Corruption cases brought to light</p>
+                            </div>
+                        </div>
+    
+                        <!-- Counter 2: Land Reclaimed -->
+                        <div class="text-center group">
+                            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                                <div class="mb-4">
+                                    <i class="fi fi-rr-indian-rupee-sign text-5xl text-header-orange mb-4"></i>
+                                </div>
+                                <div class="text-4xl md:text-5xl font-bold text-primary mb-2">
+                                    ₹<span class="counter" data-target="11000">0</span>+
+                                </div>
+                                <h3 class="text-lg font-semibold text-primary mb-2">Crore Reclaimed</h3>
+                                <p class="text-primary/70 text-sm">Public land value recovered</p>
+                            </div>
+                        </div>
+    
+                        <!-- Counter 3: Revenue Leakages -->
+                        <div class="text-center group">
+                            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                                <div class="mb-4">
+                                    <i class="fi fi-rr-chart-histogram text-5xl text-header-orange mb-4"></i>
+                                </div>
+                                <div class="text-4xl md:text-5xl font-bold text-primary mb-2">
+                                    ₹<span class="counter" data-target="4500">0</span>Cr
+                                </div>
+                                <h3 class="text-lg font-semibold text-primary mb-2">Corruption Uncovered</h3>
+                                <p class="text-primary/70 text-sm">BBMP revenue leakages found</p>
+                            </div>
+                        </div>
+    
+                        <!-- Counter 4: PILs Filed -->
+                        <div class="text-center group">
+                            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                                <div class="mb-4">
+                                    <i class="fi fi-rr-document text-5xl text-header-orange mb-4"></i>
+                                </div>
+                                <div class="text-4xl md:text-5xl font-bold text-primary mb-2">
+                                    <span class="counter" data-target="59">0</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-primary mb-2">PILs Filed</h3>
+                                <p class="text-primary/70 text-sm">Legal actions for public interest</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- YouTube Videos Carousel Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-left mb-12">
+                    <h2 class="text-3xl md:text-3xl lg:text-3xl font-bold text-primary mb-4">
+                        Recent Visual Media Interaction 
+                    </h2>
+                    <p class="text-primary/80 text-lg md:text-xl max-w-3xl">
+                        Stay updated with the latest insights on governance, anti-corruption efforts, and public service initiatives
+                    </p>
+                    <div class="w-20 h-1 bg-header-orange mt-6"></div>
+                </div>
+
+                <!-- Carousel Container -->
+                <div class="relative">
+                    <!-- Carousel Wrapper -->
+                    <div class="overflow-hidden rounded-2xl">
+                        <div class="flex transition-transform duration-500 ease-in-out" id="youtube-carousel">
+                            <!-- Video 1 -->
+                            <div class="w-full flex-shrink-0">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                                    <div class="relative group cursor-pointer" onclick="openVideo('dQw4w9WgXcQ')">
+                                        <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+                                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" 
+                                                 alt="Video Thumbnail" 
+                                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                                    <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <h3 class="text-2xl md:text-3xl font-bold text-primary">
+                                            Fighting Corruption: A Comprehensive Approach
+                                        </h3>
+                                        <p class="text-primary/80 leading-relaxed">
+                                            In this detailed discussion, N. R. Ramesh explains the systematic approach to identifying and exposing corruption in public institutions. Learn about the methodologies used to uncover scams and the legal frameworks that support anti-corruption efforts.
+                                        </p>
+                                        <div class="flex items-center space-x-4 text-sm text-primary/60">
+                                            <span>2 days ago</span>
+                                            <span>•</span>
+                                            <span>12.5K views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Video 2 -->
+                            <div class="w-full flex-shrink-0">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                                    <div class="relative group cursor-pointer" onclick="openVideo('dQw4w9WgXcQ')">
+                                        <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+                                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" 
+                                                 alt="Video Thumbnail" 
+                                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                                    <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <h3 class="text-2xl md:text-3xl font-bold text-primary">
+                                            Public Land Recovery: Success Stories
+                                        </h3>
+                                        <p class="text-primary/80 leading-relaxed">
+                                            Discover how strategic legal action and persistent advocacy led to the recovery of thousands of crores worth of public land. This video showcases real case studies and the impact on community development.
+                                        </p>
+                                        <div class="flex items-center space-x-4 text-sm text-primary/60">
+                                            <span>1 week ago</span>
+                                            <span>•</span>
+                                            <span>8.7K views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Video 3 -->
+                            <div class="w-full flex-shrink-0">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                                    <div class="relative group cursor-pointer" onclick="openVideo('dQw4w9WgXcQ')">
+                                        <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+                                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" 
+                                                 alt="Video Thumbnail" 
+                                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                                    <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <h3 class="text-2xl md:text-3xl font-bold text-primary">
+                                            Transparent Governance: The Path Forward
+                                        </h3>
+                                        <p class="text-primary/80 leading-relaxed">
+                                            An in-depth look at implementing transparent governance practices in local administration. Learn about the reforms that have made a measurable difference in public service delivery and accountability.
+                                        </p>
+                                        <div class="flex items-center space-x-4 text-sm text-primary/60">
+                                            <span>2 weeks ago</span>
+                                            <span>•</span>
+                                            <span>15.2K views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10" 
+                            onclick="previousVideo()" id="prev-btn">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10" 
+                            onclick="nextVideo()" id="next-btn">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Dots Indicator -->
+                    <div class="flex justify-center space-x-2 mt-8">
+                        <button class="w-3 h-3 rounded-full bg-header-orange transition-all duration-300" onclick="goToVideo(0)" id="dot-0"></button>
+                        <button class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" onclick="goToVideo(1)" id="dot-1"></button>
+                        <button class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" onclick="goToVideo(2)" id="dot-2"></button>
+                    </div>
+                </div>
+
+                <!-- View All Videos Button -->
+                <div class="text-center mt-12">
+                    <a href="#" class="inline-flex items-center px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        View All Videos on YouTube
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paper Clips Carousel Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-left mb-12">
+                    <h2 class="text-3xl md:text-3xl lg:text-3xl font-bold text-primary mb-4">
+                        Recent Paper Clips & Coverage
+                    </h2>
+                    <p class="text-primary/80 text-lg md:text-xl max-w-3xl">
+                        Latest newspaper clippings, media coverage, and press releases showcasing ongoing initiatives and public service work
+                    </p>
+                    <div class="w-20 h-1 bg-header-orange mt-6"></div>
+                </div>
+
+                <!-- Modern News Grid Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Featured Article 1 -->
+                    <article class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden group cursor-pointer border border-gray-100" onclick="openClipModal('clip1')">
+                        <div class="relative overflow-hidden">
+                            <img src="image/pic-7.jpg" 
+                                 alt="Major Corruption Scam Exposed" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-red-600 font-bold text-sm">THE HINDU</span>
+                                <span class="text-gray-400 text-sm">Sep 03, 2025</span>
+                                <button class="ml-auto text-gray-400 hover:text-gray-600 transition-colors">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-primary transition-colors">
+                                Major Corruption Scam Exposed in BBMP
+                            </h2>
+                            <div class="flex items-center justify-end">
+                                <span class="text-primary text-sm font-medium group-hover:underline">Read More →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Featured Article 2 -->
+                    <article class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden group cursor-pointer border border-gray-100" onclick="openClipModal('clip2')">
+                        <div class="relative overflow-hidden">
+                            <img src="image/pic-2.jpg" 
+                                 alt="Public Administration Transform" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-blue-600 font-bold text-sm">GOVERNANCE TODAY</span>
+                                <span class="text-gray-400 text-sm">Sep 01, 2025</span>
+                                <button class="ml-auto text-gray-400 hover:text-gray-600 transition-colors">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-primary transition-colors">
+                                Transforming Public Administration
+                            </h2>
+                            <div class="flex items-center justify-end">
+                                <span class="text-primary text-sm font-medium group-hover:underline">Read More →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Featured Article 3 -->
+                    <article class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden group cursor-pointer border border-gray-100" onclick="openClipModal('clip3')">
+                        <div class="relative overflow-hidden">
+                            <img src="image/pic-3.jpg" 
+                                 alt="Youth Employment Success" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-green-600 font-bold text-sm">PRESS RELEASE</span>
+                                <span class="text-gray-400 text-sm">Aug 31, 2025</span>
+                                <button class="ml-auto text-gray-400 hover:text-gray-600 transition-colors">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-primary transition-colors">
+                                Record-Breaking Job Fair Success
+                            </h2>
+                            <div class="flex items-center justify-end">
+                                <span class="text-primary text-sm font-medium group-hover:underline">Read More →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Featured Article 4 -->
+                    <article class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden group cursor-pointer border border-gray-100" onclick="openClipModal('clip4')">
+                        <div class="relative overflow-hidden">
+                            <img src="image/pic-4.jpg" 
+                                 alt="Land Recovery Initiative" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-orange-600 font-bold text-sm">DECCAN HERALD</span>
+                                <span class="text-gray-400 text-sm">Aug 28, 2025</span>
+                                <button class="ml-auto text-gray-400 hover:text-gray-600 transition-colors">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-primary transition-colors">
+                                Public Land Recovery Initiative
+                            </h2>
+                            <div class="flex items-center justify-end">
+                                <span class="text-primary text-sm font-medium group-hover:underline">Read More →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Featured Article 5 -->
+                    <article class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden group cursor-pointer border border-gray-100" onclick="openClipModal('clip5')">
+                        <div class="relative overflow-hidden">
+                            <img src="image/pic-5.jpg" 
+                                 alt="Transparency Report" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="text-indigo-600 font-bold text-sm">TIMES OF INDIA</span>
+                                <span class="text-gray-400 text-sm">Aug 25, 2025</span>
+                                <button class="ml-auto text-gray-400 hover:text-gray-600 transition-colors">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-primary transition-colors">
+                                Annual Transparency Report Released
+                            </h2>
+                            <div class="flex items-center justify-end">
+                                <span class="text-primary text-sm font-medium group-hover:underline">Read More →</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- View All Button -->
+                <div class="text-center mt-12">
+                    <button class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/20">
+                        <i class="fi fi-rr-newspaper mr-2"></i>
+                        View All Press Coverage
+                    </button>
+                </div>
+            </div>
+        </section>
+
+            
+
+        <!-- Mission Section - Alternative Design -->
+        <section class="py-24 relative overflow-hidden" style="background-image: url('image/parallax-02.jpg'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+            <!-- Dark overlay with gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/70 to-primary/75"></div>
+            
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 translate-y-48"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="text-left mb-16">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+                        N R Ramesh's Mission
+                    </h2>
+                    <p class="text-white/90 text-lg md:text-xl max-w-3xl">
+                        Committed to transforming governance through transparency, accountability, and citizen-first policies
+                    </p>
+                    <div class="w-20 h-1 bg-header-orange mt-6"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Mission Point 1 -->
+                    <div class="bg-black/50 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-primary/50 transition-all duration-300 group">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-header-orange rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Fight Corruption Relentlessly</h3>
+                        </div>
+                        <p class="text-white/90 leading-relaxed text-center">
+                            Expose scams, pursue legal action, and safeguard public assets from misuse through systematic investigation and transparent reporting.
+                        </p>
+                    </div>
+
+                    <!-- Mission Point 2 -->
+                    <div class="bg-black/50 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-primary/50 transition-all duration-300 group">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-header-orange rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Restore Public Wealth</h3>
+                        </div>
+                        <p class="text-white/90 leading-relaxed text-center">
+                            Reclaim encroached government land and recover lost revenues to strengthen civic infrastructure and public services.
+                        </p>
+                    </div>
+
+                    <!-- Mission Point 3 -->
+                    <div class="bg-black/50 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-primary/50 transition-all duration-300 group">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-header-orange rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Champion Clean Governance</h3>
+                        </div>
+                        <p class="text-white/90 leading-relaxed text-center">
+                            Drive reforms like banning harmful practices and regulating exploitative systems for better civic management.
+                        </p>
+                    </div>
+
+                    <!-- Mission Point 4 -->
+                    <div class="bg-black/50 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-primary/50 transition-all duration-300 group">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-header-orange rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Empower Youth</h3>
+                        </div>
+                        <p class="text-white/90 leading-relaxed text-center">
+                            Create platforms for employment, skills, and participation—exemplified by the record-breaking 2024 mega job fair.
+                        </p>
+                    </div>
+
+                    <!-- Mission Point 5 -->
+                    <div class="bg-black/50 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-primary/50 transition-all duration-300 group md:col-span-2 lg:col-span-1">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-header-orange rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Serve Communities with Integrity</h3>
+                        </div>
+                        <p class="text-white/90 leading-relaxed text-center">
+                            Ensure that policies and development initiatives put citizens' interests above politics or profit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Gallery Grid Section -->
+        <section class="py-16 bg-gradient-to-br from-gray-50 to-white" aria-labelledby="gallery-heading">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-left mb-12">
+                    <h2 id="gallery-heading" class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        Photo Gallery
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl">
+                        Capturing moments from public engagements, development projects, and community initiatives
+                    </p>
+                    <div class="w-20 h-1 bg-header-orange mt-6"></div>
+                </div>
+
+                <!-- Multi-Image Grid Container -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Image 1 -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('image/pic-2.jpg', 'Development Project', 'Infrastructure development for community growth')">
+                        <img src="image/pic-2.jpg" alt="Development Project" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-lg font-bold mb-1">Development Project</h3>
+                            <p class="text-sm text-white/90">Infrastructure development for community growth</p>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Image 2 -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('image/pic-3.jpg', 'Public Meeting', 'Transparent governance through public consultations')">
+                        <img src="image/pic-3.jpg" alt="Public Meeting" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-lg font-bold mb-1">Public Meeting</h3>
+                            <p class="text-sm text-white/90">Transparent governance through public consultations</p>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Image 3 -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('image/pic-4.jpg', 'Infrastructure Development', 'Building sustainable infrastructure for the future')">
+                        <img src="image/pic-4.jpg" alt="Infrastructure Development" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-lg font-bold mb-1">Infrastructure Development</h3>
+                            <p class="text-sm text-white/90">Building sustainable infrastructure for the future</p>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Image 4 -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('image/pic-5.jpg', 'Community Outreach', 'Reaching out to serve every corner of the constituency')">
+                        <img src="image/pic-5.jpg" alt="Community Outreach" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-lg font-bold mb-1">Community Outreach</h3>
+                            <p class="text-sm text-white/90">Reaching out to serve every corner of the constituency</p>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Image 5 -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('image/pic-6.jpg', 'Public Service', 'Dedicated service to the people and their needs')">
+                        <img src="image/pic-6.jpg" alt="Public Service" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-lg font-bold mb-1">Public Service</h3>
+                            <p class="text-sm text-white/90">Dedicated service to the people and their needs</p>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Image 6 -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('image/pic-7.jpg', 'Government Initiative', 'Leading progressive government programs')">
+                        <img src="image/pic-7.jpg" alt="Government Initiative" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-lg font-bold mb-1">Government Initiative</h3>
+                            <p class="text-sm text-white/90">Leading progressive government programs</p>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Image 7 -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('image/pic-8.jpg', 'Press Conference', 'Maintaining transparency through media engagement')">
+                        <img src="image/pic-8.jpg" alt="Press Conference" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-lg font-bold mb-1">Press Conference</h3>
+                            <p class="text-sm text-white/90">Maintaining transparency through media engagement</p>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Image 8 -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('image/pic-9.jpg', 'Field Visit', 'On-ground inspection and project monitoring')">
+                        <img src="image/pic-9.jpg" alt="Field Visit" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-lg font-bold mb-1">Field Visit</h3>
+                            <p class="text-sm text-white/90">On-ground inspection and project monitoring</p>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightbox Modal -->
+                <div id="lightbox" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+                    <div class="relative max-w-4xl max-h-full">
+                        <img id="lightbox-image" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded-lg">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
+                            <h3 id="lightbox-title" class="text-white text-xl font-bold mb-2"></h3>
+                            <p id="lightbox-description" class="text-white/90"></p>
+                        </div>
+                        <button onclick="closeLightbox()" class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-full p-3 transition-all duration-200">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+      
+        </section>
+@endsection
