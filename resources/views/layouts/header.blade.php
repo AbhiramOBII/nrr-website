@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,36 +9,36 @@
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-bg-cream font-satoshi min-h-screen">
+<body class="bg-bg-cream font-satoshi min-h-screen overflow-x-hidden">
     <!-- Top Bar -->
-    <div class="bg-primary text-white py-3 text-base">
+    <div class="bg-primary text-white py-2 text-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+            <div class="flex justify-between items-center">
                 <!-- Contact Information -->
-                <div class="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-6">
-                    <div class="flex items-center space-x-2">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <div class="flex flex-col space-y-1 sm:flex-row sm:space-y-0 sm:space-x-4">
+                    <div class="flex items-center space-x-1">
+                        <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
                         </svg>
-                        <span>+91 98765 43210</span>
+                        <span class="text-xs sm:text-sm truncate">+91 99458 01999</span>
                     </div>
-                    <div class="flex items-center space-x-2">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <div class="flex items-center space-x-1">
+                        <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                         </svg>
-                        <span>contact@nrramesh.com</span>
+                        <span class="text-xs sm:text-sm truncate">contact@nrramesh.com</span>
                     </div>
                 </div>
                 
                 <!-- Language Selection -->
-                <div class="relative">
-                    <button id="language-dropdown-btn" class="flex items-center space-x-2 hover:text-opacity-80 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded px-2 py-1 transition-colors duration-200" aria-haspopup="true" aria-expanded="false">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <div class="relative flex-shrink-0">
+                    <button id="language-dropdown-btn" class="flex items-center space-x-1 hover:text-opacity-80 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded px-2 py-1 transition-colors duration-200" aria-haspopup="true" aria-expanded="false">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-4 0 2 2 0 00-1.668-1.973z" clip-rule="evenodd"/>
                         </svg>
-                        <span id="selected-language">{{ app()->getLocale() === 'kn' ? 'ಕನ್ನಡ' : 'English' }}</span>
-                        <svg class="w-4 h-4 transition-transform duration-200" id="language-dropdown-arrow" fill="currentColor" viewBox="0 0 20 20">
+                        <span id="selected-language" class="text-xs sm:text-sm">{{ app()->getLocale() === 'kn' ? 'ಕನ್ನಡ' : 'English' }}</span>
+                        <svg class="w-3 h-3 transition-transform duration-200" id="language-dropdown-arrow" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
                         </svg>
                     </button>
@@ -73,136 +73,120 @@
 
     <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-white px-4 py-2 rounded-md z-50">
-        Skip to main content
+        {{ __('messages.skip_to_main') }}
     </a>
 
     <!-- Header -->
-    <header class="bg-header-orange border-b border-dark-shade" role="banner">
+    <header class="bg-header-orange border-b border-dark-shade sticky top-0 z-40" role="banner">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-6">
+            <div class="flex justify-between items-center py-3">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <div class="flex items-center space-x-3">
-                        <img src="image/bjp-logo.svg" alt="N. R. Ramesh Logo" class="h-10 w-10 md:h-12 md:w-12 object-contain">
-                        <h1 class="text-2xl md:text-3xl font-bold text-white">
-                            N. R. Ramesh
-                        </h1>
+                        <a href="{{ route('home') }}" class="flex items-center space-x-2">
+                            <img src="{{ asset('image/bjp-logo.svg') }}" alt="N. R. Ramesh Logo" class="h-10 w-10 md:h-12 md:w-12 object-contain">
+                            <h1 class="text-2xl md:text-3xl font-bold text-white">
+                                {{ __('messages.name') }}
+                            </h1>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:block" role="navigation" aria-label="Main navigation">
-                    <ul class="flex items-center space-x-2">
+                <nav class="hidden lg:block" role="navigation" aria-label="Main navigation">
+                    <ul class="flex items-center space-x-1">
                         <li class="relative group">
-                            <a href="#" class="text-white font-semibold text-lg hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-4 py-2 transition-all duration-300 hover:bg-white/10 relative">
-                                About
+                            <a href="{{ route('about') }}" class="text-white font-semibold text-base hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-3 py-2 transition-all duration-300 hover:bg-white/10 relative whitespace-nowrap">
+                                {{ __('messages.about') }}
                                 <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                             </a>
                         </li>
                         <li class="relative group">
-                            <button class="text-white font-semibold text-lg hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-4 py-2 transition-all duration-300 hover:bg-white/10 flex items-center gap-2 relative">
-                                Major Development
-                                <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-300 group-hover:rotate-180"></i>
+                            <button class="text-white font-semibold text-base hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-3 py-2 transition-all duration-300 hover:bg-white/10 flex items-center gap-1 relative whitespace-nowrap">
+                                {{ __('messages.major_development') }}
+                                <i class="fas fa-chevron-down w-3 h-3 transition-transform duration-300 group-hover:rotate-180"></i>
                                 <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                             </button>
                             <!-- Enhanced Dropdown Menu -->
                             <div class="absolute top-full left-0 mt-3 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
                                 <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-3">
-                                    <h3 class="text-white font-semibold text-sm">Development Projects</h3>
+                                    <h3 class="text-white font-semibold text-sm">{{ __('messages.development_projects') }}</h3>
                                 </div>
                                 <div class="py-2 max-h-96 overflow-y-auto">
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-700 transition-all duration-200">
+                                    @php
+                                        $majorDevelopments = \App\Models\MajorDevelopment::active()->ordered()->get();
+                                    @endphp
+                                    @forelse($majorDevelopments as $development)
+                                    <a href="{{ route('major-development.show', $development->slug) }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-700 transition-all duration-200">
                                         <div class="w-2 h-2 bg-indigo-400 rounded-full mr-3 group-hover/item:bg-indigo-600 transition-colors"></div>
-                                        Yedeyur Bio-Methanization Plant
+                                        {{ $development->title }}
                                     </a>
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-700 transition-all duration-200">
-                                        <div class="w-2 h-2 bg-indigo-400 rounded-full mr-3 group-hover/item:bg-indigo-600 transition-colors"></div>
-                                        Yedeyur Lake Development
-                                    </a>
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-700 transition-all duration-200">
-                                        <div class="w-2 h-2 bg-indigo-400 rounded-full mr-3 group-hover/item:bg-indigo-600 transition-colors"></div>
-                                        Sardar Vallabhbhai Academy
-                                    </a>
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-700 transition-all duration-200">
-                                        <div class="w-2 h-2 bg-indigo-400 rounded-full mr-3 group-hover/item:bg-indigo-600 transition-colors"></div>
-                                        Sushruta Children's Hospital
-                                    </a>
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-700 transition-all duration-200">
-                                        <div class="w-2 h-2 bg-indigo-400 rounded-full mr-3 group-hover/item:bg-indigo-600 transition-colors"></div>
-                                        Prakruthi Vana
-                                    </a>
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-700 transition-all duration-200">
-                                        <div class="w-2 h-2 bg-indigo-400 rounded-full mr-3 group-hover/item:bg-indigo-600 transition-colors"></div>
-                                        Ranadheera Kanteerava Park
-                                    </a>
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-700 transition-all duration-200">
-                                        <div class="w-2 h-2 bg-indigo-400 rounded-full mr-3 group-hover/item:bg-indigo-600 transition-colors"></div>
-                                        Navathare Badminton Academy
-                                    </a>
+                                    @empty
+                                    <p class="px-4 py-3 text-sm text-gray-500">{{ __('messages.no_developments_yet') }}</p>
+                                    @endforelse
                                 </div>
                             </div>
                         </li>
                         <li class="relative group">
-                            <button class="text-white font-semibold text-lg hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-4 py-2 transition-all duration-300 hover:bg-white/10 flex items-center gap-2 relative">
-                                Scams Exposed
-                                <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-300 group-hover:rotate-180"></i>
+                            <button class="text-white font-semibold text-base hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-3 py-2 transition-all duration-300 hover:bg-white/10 flex items-center gap-1 relative whitespace-nowrap">
+                                {{ __('messages.scams_exposed') }}
+                                <i class="fas fa-chevron-down w-3 h-3 transition-transform duration-300 group-hover:rotate-180"></i>
                                 <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                             </button>
                             <!-- Enhanced Dropdown Menu -->
                             <div class="absolute top-full left-0 mt-3 w-84 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
                                 <div class="bg-gradient-to-r from-red-500 to-pink-600 px-4 py-3">
-                                    <h3 class="text-white font-semibold text-sm">Corruption Exposed</h3>
+                                    <h3 class="text-white font-semibold text-sm">{{ __('messages.corruption_exposed') }}</h3>
                                 </div>
-                                <div class="py-2">
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 hover:text-red-700 transition-all duration-200">
+                                <div class="py-2 max-h-96 overflow-y-auto">
+                                    @php
+                                        $scamsExposed = \App\Models\ScamExposed::active()->ordered()->get();
+                                    @endphp
+                                    @forelse($scamsExposed as $scam)
+                                    <a href="{{ route('scam-exposed.show', $scam->slug) }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 hover:text-red-700 transition-all duration-200">
                                         <div class="w-2 h-2 bg-red-400 rounded-full mr-3 group-hover/item:bg-red-600 transition-colors"></div>
-                                        Krushi Bhagya Scam
+                                        {{ $scam->title }}
                                     </a>
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 hover:text-red-700 transition-all duration-200">
-                                        <div class="w-2 h-2 bg-red-400 rounded-full mr-3 group-hover/item:bg-red-600 transition-colors"></div>
-                                        Indira Canteen Scam
-                                    </a>
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 hover:text-red-700 transition-all duration-200">
-                                        <div class="w-2 h-2 bg-red-400 rounded-full mr-3 group-hover/item:bg-red-600 transition-colors"></div>
-                                        Robert Vadra & DLF Scam
-                                    </a>
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 hover:text-red-700 transition-all duration-200">
-                                        <div class="w-2 h-2 bg-red-400 rounded-full mr-3 group-hover/item:bg-red-600 transition-colors"></div>
-                                        Sam Pitroda Land Grabbing
-                                    </a>
+                                    @empty
+                                    <p class="px-4 py-3 text-sm text-gray-500">{{ __('messages.no_scams_yet') }}</p>
+                                    @endforelse
                                 </div>
                             </div>
                         </li>
                         <li class="relative group">
-                            <button class="text-white font-semibold text-lg hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-4 py-2 transition-all duration-300 hover:bg-white/10 flex items-center gap-2 relative">
-                                News and Events
-                                <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-300 group-hover:rotate-180"></i>
+                            <button class="text-white font-semibold text-base hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-3 py-2 transition-all duration-300 hover:bg-white/10 flex items-center gap-1 relative whitespace-nowrap">
+                                {{ __('messages.news_and_events') }}
+                                <i class="fas fa-chevron-down w-3 h-3 transition-transform duration-300 group-hover:rotate-180"></i>
                                 <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                             </button>
                             <!-- Enhanced Dropdown Menu -->
                             <div class="absolute top-full left-0 mt-3 w-48 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
                                 <div class="bg-gradient-to-r from-blue-500 to-cyan-600 px-4 py-3">
-                                    <h3 class="text-white font-semibold text-sm">Media Coverage</h3>
+                                    <h3 class="text-white font-semibold text-sm">{{ __('messages.media_coverage') }}</h3>
                                 </div>
                                 <div class="py-2">
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
-                                        <i class="fas fa-newspaper w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
-                                        Print Media
-                                    </a>
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
-                                        <i class="fas fa-video w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
-                                        Visual Media
-                                    </a>
-                                    <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
+                                    <a href="{{ route('events.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
                                         <i class="fas fa-calendar-alt w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
-                                        Events & Updates
+                                        {{ __('messages.events') }}
+                                    </a>
+                                    <a href="{{ route('print-media.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
+                                        <i class="fas fa-newspaper w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
+                                        {{ __('messages.print_media') }}
+                                    </a>
+                                    <a href="{{ route('photo-gallery.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
+                                        <i class="fas fa-images w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
+                                        {{ __('messages.photo_gallery') }}
+                                    </a>
+                                    <a href="{{ route('electronic-media.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
+                                        <i class="fab fa-youtube w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
+                                        {{ __('messages.electronic_media') }}
                                     </a>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <a href="#" class="text-white font-semibold text-lg hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-4 py-2 transition-all duration-300 hover:bg-white/10 relative group">
-                                Contact
+                            <a href="{{ route('contact') }}" class="text-white font-semibold text-base hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-3 py-2 transition-all duration-300 hover:bg-white/10 relative group whitespace-nowrap">
+                                {{ __('messages.contact') }}
                                 <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                             </a>
                         </li>
@@ -210,7 +194,7 @@
                 </nav>
 
                 <!-- Mobile menu button -->
-                <div class="md:hidden">
+                <div class="lg:hidden">
                     <button type="button" class="text-white hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg p-3 transition-all duration-300 hover:bg-white/10" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
                         <span class="sr-only">Open main menu</span>
                         <svg class="h-6 w-6 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" id="menu-icon">
@@ -233,7 +217,7 @@
                     <!-- Header -->
                     <div class="bg-gradient-to-r from-orange-500 to-red-600 px-6 py-4 flex items-center justify-between">
                         <div class="flex items-center space-x-3">
-                            <img src="image/bjp-logo.svg" alt="N. R. Ramesh Logo" class="h-8 w-8 object-contain">
+                            <img src="{{ asset('image/bjp-logo.svg') }}" alt="N. R. Ramesh Logo" class="h-8 w-8 object-contain">
                             <h2 class="text-white font-bold text-lg">N. R. Ramesh</h2>
                         </div>
                         <button class="text-white hover:text-orange-200 p-2 rounded-lg transition-colors" id="mobile-close-btn">
@@ -247,8 +231,8 @@
                     <div class="flex-1 overflow-y-auto py-6">
                         <!-- About -->
                         <div class="px-6 mb-2">
-                            <a href="#" class="flex items-center justify-between py-3 text-gray-800 hover:text-orange-600 font-semibold text-lg transition-colors group">
-                                About
+                            <a href="{{ route('about') }}" class="flex items-center justify-between py-3 text-gray-800 hover:text-orange-600 font-semibold text-lg transition-colors group">
+                                {{ __('messages.about') }}
                                 <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
                                 </svg>
@@ -258,66 +242,75 @@
                         <!-- Major Development -->
                         <div class="px-6 mb-2">
                             <button class="w-full flex items-center justify-between py-3 text-gray-800 hover:text-orange-600 font-semibold text-lg transition-colors group" onclick="toggleMobileSubmenu('development')">
-                                Major Development
+                                {{ __('messages.major_development') }}
                                 <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-600 transition-transform duration-200" id="development-arrow" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                 </svg>
                             </button>
                             <div class="hidden pl-4 pb-2 space-y-1" id="development-submenu">
-                                <a href="#" class="block py-2 px-3 text-sm text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">Yedeyur Bio-Methanization Plant</a>
-                                <a href="#" class="block py-2 px-3 text-sm text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">Yedeyur Lake Development</a>
-                                <a href="#" class="block py-2 px-3 text-sm text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">Sardar Vallabhbhai Academy</a>
-                                <a href="#" class="block py-2 px-3 text-sm text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">Sushruta Children's Hospital</a>
-                                <a href="#" class="block py-2 px-3 text-sm text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">Prakruthi Vana</a>
-                                <a href="#" class="block py-2 px-3 text-sm text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">Ranadheera Kanteerava Park</a>
-                                <a href="#" class="block py-2 px-3 text-sm text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">Navathare Badminton Academy</a>
+                                @php
+                                    $mobileDevelopments = \App\Models\MajorDevelopment::active()->ordered()->get();
+                                @endphp
+                                @forelse($mobileDevelopments as $dev)
+                                <a href="{{ route('major-development.show', $dev->slug) }}" class="block py-2 px-3 text-sm text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">{{ $dev->title }}</a>
+                                @empty
+                                <p class="py-2 px-3 text-sm text-gray-500">No developments yet</p>
+                                @endforelse
                             </div>
                         </div>
 
                         <!-- Scams Exposed -->
                         <div class="px-6 mb-2">
                             <button class="w-full flex items-center justify-between py-3 text-gray-800 hover:text-red-600 font-semibold text-lg transition-colors group" onclick="toggleMobileSubmenu('scams')">
-                                Scams Exposed
+                                {{ __('messages.scams_exposed') }}
                                 <svg class="w-5 h-5 text-gray-400 group-hover:text-red-600 transition-transform duration-200" id="scams-arrow" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                 </svg>
                             </button>
                             <div class="hidden pl-4 pb-2 space-y-1" id="scams-submenu">
-                                <a href="#" class="block py-2 px-3 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">Krushi Bhagya Scam</a>
-                                <a href="#" class="block py-2 px-3 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">Indira Canteen Scam</a>
-                                <a href="#" class="block py-2 px-3 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">Robert Vadra & DLF Scam</a>
-                                <a href="#" class="block py-2 px-3 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">Sam Pitroda Land Grabbing</a>
+                                @php
+                                    $mobileScams = \App\Models\ScamExposed::active()->ordered()->get();
+                                @endphp
+                                @forelse($mobileScams as $scm)
+                                <a href="{{ route('scam-exposed.show', $scm->slug) }}" class="block py-2 px-3 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">{{ $scm->title }}</a>
+                                @empty
+                                <p class="py-2 px-3 text-sm text-gray-500">No scams exposed yet</p>
+                                @endforelse
                             </div>
                         </div>
 
                         <!-- Media -->
                         <div class="px-6 mb-2">
                             <button class="w-full flex items-center justify-between py-3 text-gray-800 hover:text-blue-600 font-semibold text-lg transition-colors group" onclick="toggleMobileSubmenu('media')">
-                                Media
+                                {{ __('messages.media') }}
                                 <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-transform duration-200" id="media-arrow" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                 </svg>
                             </button>
                             <div class="hidden pl-4 pb-2 space-y-1" id="media-submenu">
-                                <a href="#" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Print Media
+                                <a href="{{ route('events.index') }}" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                                    <i class="fas fa-calendar-alt w-4 h-4 mr-2"></i>
+                                    {{ __('messages.events') }}
                                 </a>
-                                <a href="#" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
-                                    </svg>
-                                    Visual Media
+                                <a href="{{ route('print-media.index') }}" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                                    <i class="fas fa-newspaper w-4 h-4 mr-2"></i>
+                                    {{ __('messages.print_media') }}
+                                </a>
+                                <a href="{{ route('photo-gallery.index') }}" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                                    <i class="fas fa-images w-4 h-4 mr-2"></i>
+                                    {{ __('messages.photo_gallery') }}
+                                </a>
+                                <a href="{{ route('electronic-media.index') }}" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                                    <i class="fab fa-youtube w-4 h-4 mr-2"></i>
+                                    {{ __('messages.electronic_media') }}
                                 </a>
                             </div>
                         </div>
 
                         <!-- Contact -->
                         <div class="px-6 mb-2">
-                            <a href="#" class="flex items-center justify-between py-3 text-gray-800 hover:text-orange-600 font-semibold text-lg transition-colors group">
-                                Contact
+                            <a href="{{ route('contact') }}" class="flex items-center justify-between py-3 text-gray-800 hover:text-orange-600 font-semibold text-lg transition-colors group">
+                                {{ __('messages.contact') }}
                                 <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
                                 </svg>
@@ -349,3 +342,36 @@
             </div>
         </div>
     </header>
+
+    <!-- Language Dropdown JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageDropdownBtn = document.getElementById('language-dropdown-btn');
+            const languageDropdownMenu = document.getElementById('language-dropdown-menu');
+            const languageDropdownArrow = document.getElementById('language-dropdown-arrow');
+
+            if (languageDropdownBtn && languageDropdownMenu) {
+                languageDropdownBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isExpanded = languageDropdownBtn.getAttribute('aria-expanded') === 'true';
+                    
+                    languageDropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    languageDropdownMenu.classList.toggle('hidden');
+                    if (languageDropdownArrow) {
+                        languageDropdownArrow.classList.toggle('rotate-180');
+                    }
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!languageDropdownBtn.contains(event.target) && !languageDropdownMenu.contains(event.target)) {
+                        languageDropdownMenu.classList.add('hidden');
+                        languageDropdownBtn.setAttribute('aria-expanded', 'false');
+                        if (languageDropdownArrow) {
+                            languageDropdownArrow.classList.remove('rotate-180');
+                        }
+                    }
+                });
+            }
+        });
+    </script>

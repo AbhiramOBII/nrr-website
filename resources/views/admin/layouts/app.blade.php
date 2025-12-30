@@ -10,7 +10,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('image/bjp-logo.svg') }}" alt="N. R. Ramesh Logo">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
@@ -30,7 +30,7 @@
             <!-- Main Content -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
                 <!-- Page Header -->
-                @if(isset($pageTitle) || View::hasSection('page-header'))
+                @if(isset($pageTitle) || View::hasSection('page-title'))
                 <div class="mb-6">
                     <div class="flex items-center justify-between">
                         <div>
