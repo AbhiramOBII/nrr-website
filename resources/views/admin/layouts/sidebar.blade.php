@@ -18,89 +18,66 @@
                 <span class="ml-3 font-medium">Dashboard</span>
             </a>
             
-            <!-- 1. Manage Home -->
+            <!-- Sliders -->
             <div class="space-y-1 mt-6">
-                <div class="flex items-center px-4 py-2 text-white/80 text-sm font-semibold uppercase tracking-wider">
-                    <i class="fas fa-home w-4 h-4 text-white"></i>
-                    <span class="ml-3 text-white">Manage Home</span>
-                </div>
-                
-                <a href="{{ route('admin.manage.slider') }}" 
-                   class="flex items-center px-4 py-3 ml-4 text-white rounded-lg transition-colors duration-200 hover:bg-primary/80">
-                    <i class="fas fa-sliders-h w-5 h-5"></i>
-                    <span class="ml-3 font-medium">Manage Slider</span>
-                </a>
-                
-                <a href="{{ route('admin.manage.hero.content') }}" 
-                   class="flex items-center px-4 py-3 ml-4 text-white rounded-lg transition-colors duration-200 hover:bg-primary/80">
-                    <i class="fas fa-star w-5 h-5"></i>
-                    <span class="ml-3 font-medium">Manage Hero Content</span>
-                </a>
-                
-                <a href="{{ route('admin.manage.impact.numbers') }}" 
-                   class="flex items-center px-4 py-3 ml-4 text-white rounded-lg transition-colors duration-200 hover:bg-primary/80">
-                    <i class="fas fa-chart-bar w-5 h-5"></i>
-                    <span class="ml-3 font-medium">Manage Impact Numbers</span>
-                </a>
-                
-                <a href="{{ route('admin.manage.mission') }}" 
-                   class="flex items-center px-4 py-3 ml-4 text-white rounded-lg transition-colors duration-200 hover:bg-primary/80">
-                    <i class="fas fa-bullseye w-5 h-5"></i>
-                    <span class="ml-3 font-medium">Manage Mission</span>
-                </a>
-            </div>
-            
-            <!-- 2. Manage Pages -->
-            <div class="space-y-1 mt-6">
-                <a href="{{ route('admin.manage.pages') }}" 
-                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 hover:bg-primary/80">
-                    <i class="fas fa-file-alt w-5 h-5"></i>
-                    <span class="ml-3 font-medium">Manage Pages</span>
-                </a>
-            </div>
-            
-            <!-- 3. Manage Visual Media -->
-            <div class="space-y-1 mt-6">
-                <a href="{{ route('admin.manage.visual.media') }}" 
-                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 hover:bg-primary/80">
-                    <i class="fas fa-photo-video w-5 h-5"></i>
-                    <span class="ml-3 font-medium">Manage Visual Media</span>
-                </a>
-            </div>
-            
-            <!-- 4. Manage Paper Clips -->
-            <div class="space-y-1 mt-6">
-                <a href="{{ route('admin.manage.paper.clips') }}" 
-                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 hover:bg-primary/80">
-                    <i class="fas fa-paperclip w-5 h-5"></i>
-                    <span class="ml-3 font-medium">Manage Paper Clips</span>
-                </a>
-            </div>
-            
-            <!-- 5. Manage Gallery -->
-            <div class="space-y-1 mt-6">
-                <a href="{{ route('admin.manage.gallery') }}" 
-                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 hover:bg-primary/80">
+                <a href="{{ route('admin.sliders.index') }}" 
+                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.sliders.*') ? 'bg-header-orange shadow-md' : 'hover:bg-primary/80' }}">
                     <i class="fas fa-images w-5 h-5"></i>
-                    <span class="ml-3 font-medium">Manage Gallery</span>
+                    <span class="ml-3 font-medium">Homepage Sliders</span>
                 </a>
             </div>
             
-            <!-- 6. Manage Enquiries -->
+            <!-- Media Library -->
             <div class="space-y-1 mt-6">
-                <a href="{{ route('admin.manage.enquiries') }}" 
-                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 hover:bg-primary/80">
-                    <i class="fas fa-envelope w-5 h-5"></i>
-                    <span class="ml-3 font-medium">Manage Enquiries</span>
+                <a href="{{ route('admin.media.index') }}" 
+                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.media.*') ? 'bg-header-orange shadow-md' : 'hover:bg-primary/80' }}">
+                    <i class="fas fa-photo-video w-5 h-5"></i>
+                    <span class="ml-3 font-medium">Media Library</span>
                 </a>
             </div>
             
-            <!-- 7. Manage Newsletter Subscription -->
+            <!-- Major Developments -->
             <div class="space-y-1 mt-6">
-                <a href="{{ route('admin.manage.newsletter') }}" 
-                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 hover:bg-primary/80">
+                <a href="{{ route('admin.major-developments.index') }}" 
+                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.major-developments.*') ? 'bg-header-orange shadow-md' : 'hover:bg-primary/80' }}">
+                    <i class="fas fa-building w-5 h-5"></i>
+                    <span class="ml-3 font-medium">Major Developments</span>
+                </a>
+            </div>
+            
+            <!-- Scams Exposed -->
+            <div class="space-y-1 mt-6">
+                <a href="{{ route('admin.scams-exposed.index') }}" 
+                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.scams-exposed.*') ? 'bg-header-orange shadow-md' : 'hover:bg-primary/80' }}">
+                    <i class="fas fa-exclamation-triangle w-5 h-5"></i>
+                    <span class="ml-3 font-medium">Scams Exposed</span>
+                </a>
+            </div>
+            
+            <!-- Events -->
+            <div class="space-y-1 mt-6">
+                <a href="{{ route('admin.events.index') }}" 
+                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.events.*') ? 'bg-header-orange shadow-md' : 'hover:bg-primary/80' }}">
+                    <i class="fas fa-calendar-alt w-5 h-5"></i>
+                    <span class="ml-3 font-medium">Events</span>
+                </a>
+            </div>
+            
+            <!-- Print Media -->
+            <div class="space-y-1 mt-6">
+                <a href="{{ route('admin.print-media.index') }}" 
+                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.print-media.*') ? 'bg-header-orange shadow-md' : 'hover:bg-primary/80' }}">
                     <i class="fas fa-newspaper w-5 h-5"></i>
-                    <span class="ml-3 font-medium">Manage Newsletter Subscription</span>
+                    <span class="ml-3 font-medium">Print Media</span>
+                </a>
+            </div>
+            
+            <!-- Electronic Media -->
+            <div class="space-y-1 mt-6">
+                <a href="{{ route('admin.electronic-media.index') }}" 
+                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.electronic-media.*') ? 'bg-header-orange shadow-md' : 'hover:bg-primary/80' }}">
+                    <i class="fab fa-youtube w-5 h-5"></i>
+                    <span class="ml-3 font-medium">Electronic Media</span>
                 </a>
             </div>
         </div>

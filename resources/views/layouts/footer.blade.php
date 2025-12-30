@@ -6,29 +6,28 @@
             <!-- About Ramesh N R - 3/12 -->
             <div class="md:col-span-3">
                 <div class="flex items-center space-x-3 mb-6">
-                    <img src="image/bjp-logo.svg" alt="N. R. Ramesh Logo" class="h-8 w-8 object-contain">
-                    <h3 class="text-xl font-bold">N. R. Ramesh</h3>
+                    <img src="{{ asset('image/bjp-logo.svg') }}" alt="N. R. Ramesh Logo" class="h-8 w-8 object-contain">
+                    <h3 class="text-xl font-bold">{{ __('messages.name') }}</h3>
                 </div>
                 <p class="text-gray-300 text-base leading-relaxed mb-4">
-                    Dedicated public servant committed to transparency, accountability, and progressive governance. Fighting corruption and working tirelessly for the development of our community.
+                    {{ __('messages.footer_about') }}
                 </p>
                 <div class="text-gray-400 text-sm">
                     <p>© 2025 N. R. Ramesh</p>
-                    <p>All rights reserved</p>
+                    <p>{{ __('messages.all_rights_reserved') }}</p>
                 </div>
             </div>
 
             <!-- Quick Links - 3/12 -->
             <div class="md:col-span-3">
-                <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                <h3 class="text-lg font-semibold mb-6">{{ __('messages.quick_links') }}</h3>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-base">About</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-base">Major Developments</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-base">Scams Exposed</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-base">Media Coverage</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-base">Press Releases</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-base">Contact</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors text-base">Privacy Policy</a></li>
+                    <li><a href="{{ route('about') }}" class="text-gray-300 hover:text-white transition-colors text-base">{{ __('messages.about') }}</a></li>
+                    <li><a href="{{ route('events.index') }}" class="text-gray-300 hover:text-white transition-colors text-base">{{ __('messages.events') }}</a></li>
+                    <li><a href="{{ route('print-media.index') }}" class="text-gray-300 hover:text-white transition-colors text-base">{{ __('messages.print_media') }}</a></li>
+                    <li><a href="{{ route('photo-gallery.index') }}" class="text-gray-300 hover:text-white transition-colors text-base">{{ __('messages.photo_gallery') }}</a></li>
+                    <li><a href="{{ route('electronic-media.index') }}" class="text-gray-300 hover:text-white transition-colors text-base">{{ __('messages.electronic_media') }}</a></li>
+                    <li><a href="{{ route('contact') }}" class="text-gray-300 hover:text-white transition-colors text-base">{{ __('messages.contact') }}</a></li>
                 </ul>
             </div>
 
@@ -37,7 +36,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- Social Links -->
                     <div>
-                        <h3 class="text-lg font-semibold mb-6">Follow Us</h3>
+                        <h3 class="text-lg font-semibold mb-6">{{ __('messages.follow_us') }}</h3>
                         <div class="flex flex-col space-y-4">
                             <a href="#" class="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors group">
                                 <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-500 transition-colors">
@@ -76,21 +75,21 @@
 
                     <!-- Newsletter Subscription -->
                     <div>
-                        <h3 class="text-lg font-semibold mb-6">Subscribe to Newsletter</h3>
-                        <p class="text-gray-300 text-base mb-4">Stay updated with the latest news, developments, and important announcements.</p>
+                        <h3 class="text-lg font-semibold mb-6">{{ __('messages.subscribe_newsletter') }}</h3>
+                        <p class="text-gray-300 text-base mb-4">{{ __('messages.newsletter_desc') }}</p>
                         <form class="space-y-3">
                             <div>
-                                <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors">
+                                <input type="email" placeholder="{{ __('messages.enter_email') }}" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors">
                             </div>
                             <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                 </svg>
-                                Subscribe
+                                {{ __('messages.subscribe') }}
                             </button>
                         </form>
                         <p class="text-sm text-gray-400 mt-3">
-                            We respect your privacy. Unsubscribe at any time.
+                            {{ __('messages.privacy_respect') }}
                         </p>
                     </div>
                 </div>
@@ -103,18 +102,18 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex flex-col md:flex-row justify-between items-center text-base text-gray-400">
                 <div class="flex flex-col items-center md:items-start">
-                    <p>© 2025 N. R. Ramesh. All rights reserved.</p>
+                    <p>© 2025 N. R. Ramesh. {{ __('messages.all_rights_reserved') }}</p>
                     <p class="text-sm mt-1">
-                        Proudly Powered by 
+                        {{ __('messages.proudly_powered_by') }} 
                         <a href="https://www.obiikriationz.com" target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:text-orange-300 transition-colors font-medium">
                             Obii Kriationz Web LLP
                         </a>
                     </p>
                 </div>
                 <div class="flex space-x-6 mt-2 md:mt-0">
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Disclaimer</a>
+                    <a href="#" class="hover:text-white transition-colors">{{ __('messages.terms_of_service') }}</a>
+                    <a href="#" class="hover:text-white transition-colors">{{ __('messages.privacy_policy') }}</a>
+                    <a href="#" class="hover:text-white transition-colors">{{ __('messages.disclaimer') }}</a>
                 </div>
             </div>
         </div>
@@ -435,60 +434,7 @@
             // Make toggleMobileSubmenu globally available
             window.toggleMobileSubmenu = toggleMobileSubmenu;
 
-            // Language dropdown functionality
-            const languageDropdownBtn = document.getElementById('language-dropdown-btn');
-            const languageDropdownMenu = document.getElementById('language-dropdown-menu');
-            const languageDropdownArrow = document.getElementById('language-dropdown-arrow');
-            const selectedLanguageSpan = document.getElementById('selected-language');
-            const languageOptions = document.querySelectorAll('.language-option');
-
-            if (languageDropdownBtn && languageDropdownMenu) {
-                languageDropdownBtn.addEventListener('click', function() {
-                    const isExpanded = languageDropdownBtn.getAttribute('aria-expanded') === 'true';
-                    
-                    languageDropdownBtn.setAttribute('aria-expanded', !isExpanded);
-                    languageDropdownMenu.classList.toggle('hidden');
-                    languageDropdownArrow.classList.toggle('rotate-180');
-                });
-
-                // Language option selection
-                languageOptions.forEach(option => {
-                    option.addEventListener('click', function() {
-                        const selectedLang = this.getAttribute('data-lang');
-                        const selectedText = this.querySelector('span:last-child').textContent;
-                        
-                        selectedLanguageSpan.textContent = selectedText;
-                        languageDropdownMenu.classList.add('hidden');
-                        languageDropdownBtn.setAttribute('aria-expanded', 'false');
-                        languageDropdownArrow.classList.remove('rotate-180');
-                        
-                        // Store selected language in localStorage
-                        localStorage.setItem('selectedLanguage', selectedLang);
-                        
-                        // Here you could add actual language switching logic
-                        console.log('Language changed to:', selectedLang);
-                    });
-                });
-
-                // Close dropdown when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!languageDropdownBtn.contains(event.target) && !languageDropdownMenu.contains(event.target)) {
-                        languageDropdownMenu.classList.add('hidden');
-                        languageDropdownBtn.setAttribute('aria-expanded', 'false');
-                        languageDropdownArrow.classList.remove('rotate-180');
-                    }
-                });
-
-                // Load saved language preference
-                const savedLanguage = localStorage.getItem('selectedLanguage');
-                if (savedLanguage) {
-                    const savedOption = document.querySelector(`[data-lang="${savedLanguage}"]`);
-                    if (savedOption) {
-                        const savedText = savedOption.querySelector('span:last-child').textContent;
-                        selectedLanguageSpan.textContent = savedText;
-                    }
-                }
-            }
+            // Language dropdown functionality moved to header.blade.php
 
 
             // Slider functionality
