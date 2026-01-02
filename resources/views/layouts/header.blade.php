@@ -6,8 +6,38 @@
     <title>N. R. Ramesh - Results Over Rhetoric</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Apply Baloo Tamma font to Kannada text */
+        html[lang="kn"] body {
+            font-family: 'Baloo Tamma 2', 'Satoshi', sans-serif;
+        }
+        
+        /* Reduce font size for Kannada in header navigation */
+        html[lang="kn"] header nav a,
+        html[lang="kn"] header nav button {
+            font-size: 0.875rem !important; /* 14px instead of 16px */
+        }
+        
+        /* Adjust logo text size for Kannada */
+        html[lang="kn"] header h1 {
+            font-size: 1.5rem !important; /* Smaller than default */
+        }
+        
+        @media (min-width: 768px) {
+            html[lang="kn"] header h1 {
+                font-size: 1.875rem !important; /* Smaller than default */
+            }
+        }
+        
+        /* Adjust dropdown menu text for Kannada */
+        html[lang="kn"] .group-hover\:opacity-100 h3,
+        html[lang="kn"] .group-hover\:opacity-100 a {
+            font-size: 0.8125rem !important; /* 13px */
+        }
+    </style>
 </head>
 <body class="bg-bg-cream font-satoshi min-h-screen overflow-x-hidden">
     <!-- Top Bar -->
