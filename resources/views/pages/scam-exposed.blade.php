@@ -27,13 +27,13 @@
                 <!-- Main Content -->
                 <div class="lg:col-span-2">
                     <!-- Featured Image -->
-                    @if($scam->featuredMedia)
+                    <!-- @if($scam->featuredMedia)
                     <div class="mb-8 rounded-xl overflow-hidden shadow-lg">
                         <img src="{{ $scam->featuredMedia->url }}" 
                              alt="{{ $scam->title }}" 
                              class="w-full h-auto object-cover">
                     </div>
-                    @endif
+                    @endif -->
 
                     <!-- Description -->
                     <div class="bg-white rounded-xl shadow-md p-6 md:p-8">

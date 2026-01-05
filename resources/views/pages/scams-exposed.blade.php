@@ -25,7 +25,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach($scams as $scam)
                 <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    @if($scam->featuredMedia)
+                    <!-- @if($scam->featuredMedia)
                     <div class="aspect-video overflow-hidden">
                         <img src="{{ $scam->featuredMedia->url }}" 
                              alt="{{ $scam->title }}" 
@@ -35,7 +35,7 @@
                     <div class="aspect-video bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center">
                         <i class="fas fa-exclamation-triangle text-white text-5xl opacity-50"></i>
                     </div>
-                    @endif
+                    @endif -->
                     
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
