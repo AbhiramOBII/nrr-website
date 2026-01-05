@@ -239,22 +239,9 @@
 
                         <!-- Major Development -->
                         <div class="px-6 mb-2">
-                            <button class="w-full flex items-center justify-between py-3 text-gray-800 hover:text-orange-600 font-semibold text-lg transition-colors group" onclick="toggleMobileSubmenu('development')">
+                            <a href="{{ route('major-developments.public') }}" class="block py-3 text-gray-800 hover:text-red-600 font-semibold text-lg transition-colors">
                                 {{ __('messages.major_development') }}
-                                <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-600 transition-transform duration-200" id="development-arrow" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                            <div class="hidden pl-4 pb-2 space-y-1" id="development-submenu">
-                                @php
-                                    $mobileDevelopments = \App\Models\MajorDevelopment::active()->ordered()->get();
-                                @endphp
-                                @forelse($mobileDevelopments as $dev)
-                                <a href="{{ route('major-development.show', $dev->slug) }}" class="block py-2 px-3 text-sm text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors">{{ $dev->title }}</a>
-                                @empty
-                                <p class="py-2 px-3 text-sm text-gray-500">No developments yet</p>
-                                @endforelse
-                            </div>
+                            </a>
                         </div>
 
                         <!-- Scams Exposed -->

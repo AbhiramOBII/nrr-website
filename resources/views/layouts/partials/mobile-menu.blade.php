@@ -34,56 +34,68 @@
                     </a>
                 </li>
                 
-                <!-- Major Development Dropdown -->
+                <!-- Major Development -->
                 <li>
-                    <button onclick="toggleMobileSubmenu('development')" class="w-full flex items-center justify-between px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-header-orange rounded-lg transition-all duration-200 font-medium">
-                        <div class="flex items-center">
-                            <i class="fas fa-building w-5 h-5 mr-3"></i>
-                            Major Development
-                        </div>
-                        <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-200" id="development-arrow"></i>
-                    </button>
-                    <ul class="ml-8 mt-2 space-y-1 hidden" id="development-submenu">
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Yedeyur Bio-Methanization Plant</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Yedeyur Lake Development</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Sardar Vallabhbhai Academy</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Sushruta Children's Hospital</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Prakruthi Vana</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Ranadheera Kanteerava Park</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Navathare Badminton Academy</a></li>
-                    </ul>
+                    <a href="{{ route('major-developments.public') }}" class="flex items-center px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-header-orange rounded-lg transition-all duration-200 font-medium">
+                        <i class="fas fa-building w-5 h-5 mr-3"></i>
+                        {{ __('messages.major_development') }}
+                    </a>
                 </li>
                 
-                <!-- Scams Exposed Dropdown -->
+                <!-- Scams Exposed -->
                 <li>
-                    <button onclick="toggleMobileSubmenu('scams')" class="w-full flex items-center justify-between px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-header-orange rounded-lg transition-all duration-200 font-medium">
-                        <div class="flex items-center">
-                            <i class="fas fa-exclamation-triangle w-5 h-5 mr-3"></i>
-                            Scams Exposed
-                        </div>
-                        <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-200" id="scams-arrow"></i>
-                    </button>
-                    <ul class="ml-8 mt-2 space-y-1 hidden" id="scams-submenu">
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Krushi Bhagya Scam</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Indira Canteen Scam</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Robert Vadra & DLF Scam</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Sam Pitroda Land Grabbing</a></li>
-                    </ul>
+                    <a href="{{ route('scams-exposed.public') }}" class="flex items-center px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-header-orange rounded-lg transition-all duration-200 font-medium">
+                        <i class="fas fa-exclamation-triangle w-5 h-5 mr-3"></i>
+                        {{ __('messages.scams_exposed') }}
+                    </a>
                 </li>
                 
-                <!-- News and Events Dropdown -->
+                <!-- Media Dropdown -->
                 <li>
-                    <button onclick="toggleMobileSubmenu('news')" class="w-full flex items-center justify-between px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-header-orange rounded-lg transition-all duration-200 font-medium">
+                    <button onclick="toggleMobileSubmenu('media')" class="w-full flex items-center justify-between px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-header-orange rounded-lg transition-all duration-200 font-medium">
                         <div class="flex items-center">
                             <i class="fas fa-newspaper w-5 h-5 mr-3"></i>
-                            News and Events
+                            {{ __('messages.media') }}
                         </div>
-                        <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-200" id="news-arrow"></i>
+                        <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-200" id="media-arrow"></i>
                     </button>
-                    <ul class="ml-8 mt-2 space-y-1 hidden" id="news-submenu">
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Print Media</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Visual Media</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">Events & Updates</a></li>
+                    <ul class="ml-8 mt-2 space-y-1 hidden" id="media-submenu">
+                        <li>
+                            <a href="{{ route('events.index') }}" class="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">
+                                <i class="fas fa-calendar-alt w-4 h-4 mr-2"></i>
+                                {{ __('messages.events') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('print-media.index') }}" class="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">
+                                <i class="fas fa-newspaper w-4 h-4 mr-2"></i>
+                                {{ __('messages.print_media') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('photo-gallery.index') }}" class="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">
+                                <i class="fas fa-images w-4 h-4 mr-2"></i>
+                                {{ __('messages.photo_gallery') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('electronic-media.index') }}" class="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">
+                                <i class="fab fa-youtube w-4 h-4 mr-2"></i>
+                                {{ __('messages.electronic_media') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('official-media.index') }}" class="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">
+                                <i class="fas fa-bullhorn w-4 h-4 mr-2"></i>
+                                {{ __('messages.official_media') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('blogs.index') }}" class="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-header-orange transition-colors">
+                                <i class="fas fa-blog w-4 h-4 mr-2"></i>
+                                {{ __('messages.blogs') }}
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 
