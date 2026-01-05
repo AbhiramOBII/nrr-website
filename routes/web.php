@@ -12,6 +12,8 @@ use App\Http\Controllers\ElectronicMediaController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\OfficialMediaController;
+use App\Http\Controllers\BlogController;
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -27,7 +29,9 @@ Route::get('/switch-language/{locale}', function ($locale) {
 })->name('switch.language');
 
 // Public Detail Pages
+Route::get('/major-developments', [MajorDevelopmentController::class, 'publicIndex'])->name('major-developments.public');
 Route::get('/major-development/{slug}', [MajorDevelopmentController::class, 'show'])->name('major-development.show');
+Route::get('/scams-exposed', [ScamExposedController::class, 'publicIndex'])->name('scams-exposed.public');
 Route::get('/scam-exposed/{slug}', [ScamExposedController::class, 'show'])->name('scam-exposed.show');
 
 // Events
@@ -42,6 +46,13 @@ Route::get('/photo-gallery', [PhotoGalleryController::class, 'index'])->name('ph
 
 // Electronic Media
 Route::get('/electronic-media', [ElectronicMediaController::class, 'publicIndex'])->name('electronic-media.index');
+
+// Official Media
+Route::get('/official-media', [OfficialMediaController::class, 'publicIndex'])->name('official-media.index');
+
+// Blogs
+Route::get('/blogs', [BlogController::class, 'publicIndex'])->name('blogs.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -109,6 +120,26 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/electronic-media/{electronicMedia}/edit', [ElectronicMediaController::class, 'edit'])->name('electronic-media.edit');
         Route::put('/electronic-media/{electronicMedia}', [ElectronicMediaController::class, 'update'])->name('electronic-media.update');
         Route::delete('/electronic-media/{electronicMedia}', [ElectronicMediaController::class, 'destroy'])->name('electronic-media.destroy');
+        
+        // Photo Gallery Routes
+        Route::get('/photo-gallery', [PhotoGalleryController::class, 'adminIndex'])->name('photo-gallery.index');
+        Route::post('/photo-gallery', [PhotoGalleryController::class, 'adminUpdate'])->name('photo-gallery.update');
+        
+        // Official Media Routes
+        Route::get('/official-media', [OfficialMediaController::class, 'index'])->name('official-media.index');
+        Route::get('/official-media/create', [OfficialMediaController::class, 'create'])->name('official-media.create');
+        Route::post('/official-media', [OfficialMediaController::class, 'store'])->name('official-media.store');
+        Route::get('/official-media/{officialMedia}/edit', [OfficialMediaController::class, 'edit'])->name('official-media.edit');
+        Route::put('/official-media/{officialMedia}', [OfficialMediaController::class, 'update'])->name('official-media.update');
+        Route::delete('/official-media/{officialMedia}', [OfficialMediaController::class, 'destroy'])->name('official-media.destroy');
+        
+        // Blogs Routes
+        Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+        Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
+        Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
+        Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
+        Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('blogs.update');
+        Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy');
         
         // Manage Home Routes (kept for backwards compatibility)
         Route::get('/manage-slider', [AdminController::class, 'manageSlider'])->name('manage.slider');

@@ -69,8 +69,6 @@
         <h3 id="video-title" class="text-white text-xl font-bold mt-4 text-center"></h3>
     </div>
 </div>
-
-@include('layouts.footer')
 @endsection
 
 @push('scripts')

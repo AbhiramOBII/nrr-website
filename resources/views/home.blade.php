@@ -6,16 +6,16 @@
 @section('content')
         <!-- Hero Slider Section -->
         <section class="relative" aria-labelledby="slider-heading">
-            <div class="slider-container relative w-full min-h-[500px] overflow-hidden">
+            <div class="slider-container relative w-full min-h-[570px] overflow-hidden">
                 @if($sliders->count() > 0)
                     <!-- Slide Track -->
                     <div class="slider-track flex transition-transform duration-700 ease-in-out" id="slider-track">
                         @foreach($sliders as $index => $slider)
                             <div class="slide w-full flex-shrink-0 relative">
                                 @if($slider->media)
-                                <img src="{{ $slider->media->url }}" alt="{{ $slider->title }}" class="w-full h-[500px] object-cover">
+                                <img src="{{ $slider->media->url }}" alt="{{ $slider->title }}" class="w-full h-[570px] object-cover">
                                 @else
-                                <img src="{{ asset('storage/sliders/' . $slider->image) }}" alt="{{ $slider->title }}" class="w-full h-[500px] object-cover">
+                                <img src="{{ asset('storage/sliders/' . $slider->image) }}" alt="{{ $slider->title }}" class="w-full h-[570px] object-cover">
                                 @endif
                                 <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-header-orange/40"></div>
                                 <div class="absolute inset-0 flex items-center">
@@ -64,7 +64,7 @@
                 @else
                     <!-- Default/Fallback Content when no sliders exist -->
                     <div class="slide w-full flex-shrink-0 relative">
-                        <div class="w-full h-[500px] bg-gradient-to-r from-primary to-header-orange"></div>
+                        <div class="w-full h-[570px] bg-gradient-to-r from-primary to-header-orange"></div>
                         <div class="absolute inset-0 flex items-center">
                             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                                 <div class="text-center text-white">
@@ -93,6 +93,9 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     <!-- Image Column (5/12) -->
                     <div class="lg:col-span-5">
+                        <div>
+                            <div class="text-4xl font-bold mb-6">{{ __('messages.name') }}</div>
+                        </div>
                         <div>
                             <div class="w-20 h-1 bg-header-orange mb-6"></div>
                         </div>

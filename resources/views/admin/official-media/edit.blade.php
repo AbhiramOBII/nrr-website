@@ -1,0 +1,157 @@
+@extends('admin.layouts.app')
+
+@section('title', 'Edit Official Media')
+
+@section('page-title', 'Edit Official Media')
+@section('page-description', 'Update official media content')
+
+@section('content')
+<form action="{{ route('admin.official-media.update', $officialMedia) }}" method="POST" class="space-y-6">
+    @csrf
+    @method('PUT')
+    
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Basic Information</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Title (English) *</label>
+                <input type="text" name="title_en" value="{{ old('title_en', $officialMedia->title_en) }}" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Title (Kannada)</label>
+                <input type="text" name="title_kn" value="{{ old('title_kn', $officialMedia->title_kn) }}"
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Description (English)</label>
+                <textarea name="description_en" rows="3"
+                          class="w-full px-4 py-2 border border-gray-300 rounded-lg">{{ old('description_en', $officialMedia->description_en) }}</textarea>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Description (Kannada)</label>
+                <textarea name="description_kn" rows="3"
+                          class="w-full px-4 py-2 border border-gray-300 rounded-lg">{{ old('description_kn', $officialMedia->description_kn) }}</textarea>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Published Date</label>
+            <input type="date" name="published_date" value="{{ old('published_date', $officialMedia->published_date?->format('Y-m-d')) }}"
+                   class="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg">
+        </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Media Type *</h3>
+        
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Select Media Type</label>
+            <select name="media_type" id="media_type" class="w-full px-4 py-2 border border-gray-300 rounded-lg" required onchange="toggleMediaFields()">
+                <option value="image" {{ $officialMedia->media_type === 'image' ? 'selected' : '' }}>Image</option>
+                <option value="video" {{ $officialMedia->media_type === 'video' ? 'selected' : '' }}>Video</option>
+                <option value="youtube" {{ $officialMedia->media_type === 'youtube' ? 'selected' : '' }}>YouTube</option>
+                <option value="instagram" {{ $officialMedia->media_type === 'instagram' ? 'selected' : '' }}>Instagram</option>
+                <option value="facebook" {{ $officialMedia->media_type === 'facebook' ? 'selected' : '' }}>Facebook</option>
+                <option value="twitter" {{ $officialMedia->media_type === 'twitter' ? 'selected' : '' }}>Twitter</option>
+            </select>
+        </div>
+
+        <!-- Upload Media Section -->
+        <div id="upload-media-section">
+            <h4 class="text-md font-semibold text-gray-900 mb-2">Select Media from Library *</h4>
+            <p class="text-sm text-gray-500 mb-4">Select an image or video from the media library</p>
+            
+            <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 max-h-64 overflow-y-auto p-2 border border-gray-200 rounded-lg">
+                @foreach($media as $item)
+                <label class="relative cursor-pointer group">
+                    <input type="radio" name="media_id" value="{{ $item->id }}" class="sr-only peer"
+                           {{ $officialMedia->media_id == $item->id ? 'checked' : '' }}>
+                    @if($item->isImage())
+                    <img src="{{ $item->url }}" alt="{{ $item->name }}" 
+                         class="w-full aspect-square object-cover rounded-lg border-2 border-transparent peer-checked:border-primary peer-checked:ring-2 peer-checked:ring-primary/50">
+                    @elseif($item->isVideo())
+                    <div class="w-full aspect-square bg-gray-800 rounded-lg border-2 border-transparent peer-checked:border-primary peer-checked:ring-2 peer-checked:ring-primary/50 flex items-center justify-center">
+                        <i class="fas fa-video text-white text-2xl"></i>
+                    </div>
+                    @endif
+                    <div class="absolute inset-0 bg-primary/20 rounded-lg opacity-0 peer-checked:opacity-100"></div>
+                </label>
+                @endforeach
+            </div>
+            @error('media_id')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
+        </div>
+
+        <!-- Social Media Link Section -->
+        <div id="social-link-section" class="hidden">
+            <h4 class="text-md font-semibold text-gray-900 mb-2">Social Media Link *</h4>
+            <p class="text-sm text-gray-500 mb-4">Enter the full URL of the social media post</p>
+            <input type="url" name="social_link" id="social_link" value="{{ old('social_link', $officialMedia->social_link) }}" 
+                   placeholder="https://www.youtube.com/watch?v=..."
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+            @error('social_link')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
+        </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Settings</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                <select name="status" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                    <option value="active" {{ $officialMedia->status === 'active' ? 'selected' : '' }}>Active</option>
+                    <option value="inactive" {{ $officialMedia->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Sort Order</label>
+                <input type="number" name="sort_order" value="{{ old('sort_order', $officialMedia->sort_order) }}"
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-end gap-4">
+        <a href="{{ route('admin.official-media.index') }}" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">Cancel</a>
+        <button type="submit" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90">Update Official Media</button>
+    </div>
+</form>
+
+<script>
+function toggleMediaFields() {
+    const mediaType = document.getElementById('media_type').value;
+    const uploadSection = document.getElementById('upload-media-section');
+    const socialSection = document.getElementById('social-link-section');
+    const mediaIdInputs = document.querySelectorAll('input[name="media_id"]');
+    const socialLinkInput = document.getElementById('social_link');
+    
+    if (mediaType === 'image' || mediaType === 'video') {
+        uploadSection.classList.remove('hidden');
+        socialSection.classList.add('hidden');
+        socialLinkInput.removeAttribute('required');
+        mediaIdInputs.forEach(input => {
+            if (input.checked) {
+                input.setAttribute('required', 'required');
+            }
+        });
+    } else {
+        uploadSection.classList.add('hidden');
+        socialSection.classList.remove('hidden');
+        socialLinkInput.setAttribute('required', 'required');
+        mediaIdInputs.forEach(input => {
+            input.removeAttribute('required');
+            input.checked = false;
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    toggleMediaFields();
+});
+</script>
+@endsection

@@ -147,6 +147,15 @@ class MajorDevelopmentController extends Controller
     }
 
     /**
+     * Public index page
+     */
+    public function publicIndex()
+    {
+        $developments = MajorDevelopment::active()->with('featuredMedia')->ordered()->get();
+        return view('pages.major-developments-index', compact('developments'));
+    }
+
+    /**
      * Public show page
      */
     public function show($slug)

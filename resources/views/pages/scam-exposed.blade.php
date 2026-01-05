@@ -126,7 +126,6 @@
     <img id="lightbox-image" src="" alt="" class="max-w-full max-h-full object-contain">
 </div>
 
-@include('layouts.footer')
 @endsection
 
 @push('scripts')

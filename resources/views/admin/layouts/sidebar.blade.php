@@ -80,11 +80,38 @@
                     <span class="ml-3 font-medium">Electronic Media</span>
                 </a>
             </div>
+            
+            <!-- Photo Gallery -->
+            <div class="space-y-1 mt-6">
+                <a href="{{ route('admin.photo-gallery.index') }}" 
+                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.photo-gallery.*') ? 'bg-header-orange shadow-md' : 'hover:bg-primary/80' }}">
+                    <i class="fas fa-images w-5 h-5"></i>
+                    <span class="ml-3 font-medium">Photo Gallery</span>
+                </a>
+            </div>
+            
+            <!-- Official Media -->
+            <div class="space-y-1 mt-6">
+                <a href="{{ route('admin.official-media.index') }}" 
+                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.official-media.*') ? 'bg-header-orange shadow-md' : 'hover:bg-primary/80' }}">
+                    <i class="fas fa-bullhorn w-5 h-5"></i>
+                    <span class="ml-3 font-medium">Official Media</span>
+                </a>
+            </div>
+            
+            <!-- Blogs -->
+            <div class="space-y-1 mt-6">
+                <a href="{{ route('admin.blogs.index') }}" 
+                   class="flex items-center px-4 py-3 text-white rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.blogs.*') ? 'bg-header-orange shadow-md' : 'hover:bg-primary/80' }}">
+                    <i class="fas fa-blog w-5 h-5"></i>
+                    <span class="ml-3 font-medium">Blogs</span>
+                </a>
+            </div>
         </div>
     </nav>
     
     <!-- Bottom Section -->
-    <div class="absolute bottom-0 w-64 p-4 border-t border-primary/20">
+    <!-- <div class="absolute bottom-0 w-64 p-4 border-t border-primary/20">
         <div class="flex items-center">
             <div class="flex-shrink-0">
                 <div class="w-8 h-8 bg-header-orange rounded-full flex items-center justify-center">
@@ -96,5 +123,5 @@
                 <p class="text-white/60 text-xs">Super Administrator</p>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

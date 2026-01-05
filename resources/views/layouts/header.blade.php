@@ -131,57 +131,17 @@
                                 <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                             </a>
                         </li>
-                        <li class="relative group">
-                            <button class="text-white font-semibold text-base hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-3 py-2 transition-all duration-300 hover:bg-white/10 flex items-center gap-1 relative whitespace-nowrap">
+                        <li>
+                            <a href="{{ route('major-developments.public') }}" class="text-white font-semibold text-base hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-3 py-2 transition-all duration-300 hover:bg-white/10 flex items-center gap-1 relative whitespace-nowrap">
                                 {{ __('messages.major_development') }}
-                                <i class="fas fa-chevron-down w-3 h-3 transition-transform duration-300 group-hover:rotate-180"></i>
-                                <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-                            </button>
-                            <!-- Enhanced Dropdown Menu -->
-                            <div class="absolute top-full left-0 mt-3 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
-                                <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-3">
-                                    <h3 class="text-white font-semibold text-sm">{{ __('messages.development_projects') }}</h3>
-                                </div>
-                                <div class="py-2 max-h-96 overflow-y-auto">
-                                    @php
-                                        $majorDevelopments = \App\Models\MajorDevelopment::active()->ordered()->get();
-                                    @endphp
-                                    @forelse($majorDevelopments as $development)
-                                    <a href="{{ route('major-development.show', $development->slug) }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-700 transition-all duration-200">
-                                        <div class="w-2 h-2 bg-indigo-400 rounded-full mr-3 group-hover/item:bg-indigo-600 transition-colors"></div>
-                                        {{ $development->title }}
-                                    </a>
-                                    @empty
-                                    <p class="px-4 py-3 text-sm text-gray-500">{{ __('messages.no_developments_yet') }}</p>
-                                    @endforelse
-                                </div>
-                            </div>
+                                <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-orange-400 transition-all duration-300 hover:w-full hover:left-0"></span>
+                            </a>
                         </li>
-                        <li class="relative group">
-                            <button class="text-white font-semibold text-base hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-3 py-2 transition-all duration-300 hover:bg-white/10 flex items-center gap-1 relative whitespace-nowrap">
+                        <li>
+                            <a href="{{ route('scams-exposed.public') }}" class="text-white font-semibold text-base hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-3 py-2 transition-all duration-300 hover:bg-white/10 flex items-center gap-1 relative whitespace-nowrap">
                                 {{ __('messages.scams_exposed') }}
-                                <i class="fas fa-chevron-down w-3 h-3 transition-transform duration-300 group-hover:rotate-180"></i>
-                                <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-                            </button>
-                            <!-- Enhanced Dropdown Menu -->
-                            <div class="absolute top-full left-0 mt-3 w-84 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
-                                <div class="bg-gradient-to-r from-red-500 to-pink-600 px-4 py-3">
-                                    <h3 class="text-white font-semibold text-sm">{{ __('messages.corruption_exposed') }}</h3>
-                                </div>
-                                <div class="py-2 max-h-96 overflow-y-auto">
-                                    @php
-                                        $scamsExposed = \App\Models\ScamExposed::active()->ordered()->get();
-                                    @endphp
-                                    @forelse($scamsExposed as $scam)
-                                    <a href="{{ route('scam-exposed.show', $scam->slug) }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 hover:text-red-700 transition-all duration-200">
-                                        <div class="w-2 h-2 bg-red-400 rounded-full mr-3 group-hover/item:bg-red-600 transition-colors"></div>
-                                        {{ $scam->title }}
-                                    </a>
-                                    @empty
-                                    <p class="px-4 py-3 text-sm text-gray-500">{{ __('messages.no_scams_yet') }}</p>
-                                    @endforelse
-                                </div>
-                            </div>
+                                <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-orange-400 transition-all duration-300 hover:w-full hover:left-0"></span>
+                            </a>
                         </li>
                         <li class="relative group">
                             <button class="text-white font-semibold text-base hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-3 py-2 transition-all duration-300 hover:bg-white/10 flex items-center gap-1 relative whitespace-nowrap">
@@ -210,6 +170,14 @@
                                     <a href="{{ route('electronic-media.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
                                         <i class="fab fa-youtube w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
                                         {{ __('messages.electronic_media') }}
+                                    </a>
+                                    <a href="{{ route('official-media.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
+                                        <i class="fas fa-bullhorn w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
+                                        {{ __('messages.official_media') }}
+                                    </a>
+                                    <a href="{{ route('blogs.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
+                                        <i class="fas fa-blog w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
+                                        {{ __('messages.blogs') }}
                                     </a>
                                 </div>
                             </div>
@@ -291,22 +259,9 @@
 
                         <!-- Scams Exposed -->
                         <div class="px-6 mb-2">
-                            <button class="w-full flex items-center justify-between py-3 text-gray-800 hover:text-red-600 font-semibold text-lg transition-colors group" onclick="toggleMobileSubmenu('scams')">
+                            <a href="{{ route('scams-exposed.public') }}" class="block py-3 text-gray-800 hover:text-red-600 font-semibold text-lg transition-colors">
                                 {{ __('messages.scams_exposed') }}
-                                <svg class="w-5 h-5 text-gray-400 group-hover:text-red-600 transition-transform duration-200" id="scams-arrow" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                            <div class="hidden pl-4 pb-2 space-y-1" id="scams-submenu">
-                                @php
-                                    $mobileScams = \App\Models\ScamExposed::active()->ordered()->get();
-                                @endphp
-                                @forelse($mobileScams as $scm)
-                                <a href="{{ route('scam-exposed.show', $scm->slug) }}" class="block py-2 px-3 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">{{ $scm->title }}</a>
-                                @empty
-                                <p class="py-2 px-3 text-sm text-gray-500">No scams exposed yet</p>
-                                @endforelse
-                            </div>
+                            </a>
                         </div>
 
                         <!-- Media -->
@@ -333,6 +288,14 @@
                                 <a href="{{ route('electronic-media.index') }}" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
                                     <i class="fab fa-youtube w-4 h-4 mr-2"></i>
                                     {{ __('messages.electronic_media') }}
+                                </a>
+                                <a href="{{ route('official-media.index') }}" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                                    <i class="fas fa-bullhorn w-4 h-4 mr-2"></i>
+                                    {{ __('messages.official_media') }}
+                                </a>
+                                <a href="{{ route('blogs.index') }}" class="flex items-center py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                                    <i class="fas fa-blog w-4 h-4 mr-2"></i>
+                                    {{ __('messages.blogs') }}
                                 </a>
                             </div>
                         </div>

@@ -15,6 +15,9 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
+    <!-- CKEditor 5 -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+    
     @stack('styles')
 </head>
 <body class="bg-gray-100 font-sans antialiased">
