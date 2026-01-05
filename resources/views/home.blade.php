@@ -230,17 +230,16 @@
                     <div class="w-20 h-1 bg-header-orange mt-6"></div>
                 </div>
 
-                <!-- Carousel Container -->
+                <!-- Video Carousel -->
                 @if($electronicMedia->count() > 0)
                 <div class="relative">
-                    <!-- Carousel Wrapper -->
-                    <div class="overflow-hidden rounded-2xl">
-                        <div class="flex transition-transform duration-500 ease-in-out" id="youtube-carousel">
+                    <div class="overflow-hidden">
+                        <div class="flex transition-transform duration-500 ease-in-out" id="video-carousel">
                             @foreach($electronicMedia as $video)
-                            <div class="w-full flex-shrink-0">
-                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                            <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
                                     <div class="relative group cursor-pointer" onclick="openVideo('{{ $video->video_id }}')">
-                                        <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+                                        <div class="aspect-video bg-gray-200 overflow-hidden">
                                             <img src="{{ $video->thumbnail_url }}" 
                                                  alt="{{ $video->title }}" 
                                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -254,12 +253,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="space-y-4">
-                                        <h3 class="text-2xl md:text-3xl font-bold text-primary">
+                                    <div class="p-4">
+                                        <h3 class="text-lg font-bold text-primary mb-2 line-clamp-2">
                                             {{ $video->title }}
                                         </h3>
-                                        <p class="text-primary/80 leading-relaxed">
-                                            {{ $video->short_description ?? Str::limit($video->description, 200) }}
+                                        <p class="text-sm text-primary/80 line-clamp-3">
+                                            {{ $video->short_description ?? Str::limit($video->description, 120) }}
                                         </p>
                                     </div>
                                 </div>
@@ -270,25 +269,18 @@
 
                     @if($electronicMedia->count() > 1)
                     <!-- Navigation Buttons -->
-                    <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10" 
-                            onclick="previousVideo()" id="prev-btn">
+                    <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10" 
+                            onclick="scrollVideoCarousel(-1)">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                         </svg>
                     </button>
-                    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10" 
-                            onclick="nextVideo()" id="next-btn">
+                    <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-primary p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10" 
+                            onclick="scrollVideoCarousel(1)">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </button>
-
-                    <!-- Dots Indicator -->
-                    <div class="flex justify-center space-x-2 mt-8">
-                        @foreach($electronicMedia as $index => $video)
-                        <button class="w-3 h-3 rounded-full {{ $index === 0 ? 'bg-header-orange' : 'bg-gray-300 hover:bg-gray-400' }} transition-all duration-300" onclick="goToVideo({{ $index }})" id="dot-{{ $index }}"></button>
-                        @endforeach
-                    </div>
                     @endif
                 </div>
 
@@ -490,13 +482,13 @@
                 @if($galleryPhotos->count() > 0)
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     @foreach($galleryPhotos as $photo)
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('{{ $photo->url }}', '{{ addslashes($photo->name) }}', '{{ addslashes($photo->alt_text ?? '') }}')">
-                        <img src="{{ $photo->url }}" alt="{{ $photo->alt_text ?? $photo->name }}" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('{{ $photo->media->url }}', '{{ addslashes($photo->media->name) }}', '{{ addslashes($photo->media->alt_text ?? '') }}')">
+                        <img src="{{ $photo->media->url }}" alt="{{ $photo->media->alt_text ?? $photo->media->name }}" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-lg font-bold mb-1">{{ $photo->name }}</h3>
-                            @if($photo->alt_text)
-                            <p class="text-sm text-white/90">{{ $photo->alt_text }}</p>
+                            <h3 class="text-lg font-bold mb-1">{{ $photo->media->name }}</h3>
+                            @if($photo->media->alt_text)
+                            <p class="text-sm text-white/90">{{ $photo->media->alt_text }}</p>
                             @endif
                         </div>
                         <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -540,3 +532,66 @@
       
         </section>
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let videoCarouselIndex = 0;
+    const videoCarousel = document.getElementById('video-carousel');
+    
+    if (!videoCarousel) return;
+    
+    const videoItems = videoCarousel.children.length;
+
+    function scrollVideoCarousel(direction) {
+        const containerWidth = videoCarousel.parentElement.offsetWidth;
+        const visibleItems = window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 768 ? 2 : 1);
+        const maxIndex = Math.max(0, videoItems - visibleItems);
+        
+        videoCarouselIndex = Math.max(0, Math.min(maxIndex, videoCarouselIndex + direction));
+        
+        const scrollPercentage = (videoCarouselIndex / visibleItems) * 100;
+        videoCarousel.style.transform = `translateX(-${scrollPercentage}%)`;
+    }
+
+    // Make function globally accessible
+    window.scrollVideoCarousel = scrollVideoCarousel;
+
+    // Auto-scroll every 3 seconds
+    let videoAutoScroll = setInterval(() => {
+        const visibleItems = window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 768 ? 2 : 1);
+        const maxIndex = Math.max(0, videoItems - visibleItems);
+        
+        if (videoCarouselIndex >= maxIndex) {
+            videoCarouselIndex = 0;
+        } else {
+            videoCarouselIndex++;
+        }
+        
+        const scrollPercentage = (videoCarouselIndex / visibleItems) * 100;
+        videoCarousel.style.transform = `translateX(-${scrollPercentage}%)`;
+    }, 3000);
+
+    // Pause auto-scroll on hover
+    videoCarousel.parentElement.addEventListener('mouseenter', () => {
+        clearInterval(videoAutoScroll);
+    });
+    
+    videoCarousel.parentElement.addEventListener('mouseleave', () => {
+        videoAutoScroll = setInterval(() => {
+            const visibleItems = window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 768 ? 2 : 1);
+            const maxIndex = Math.max(0, videoItems - visibleItems);
+            
+            if (videoCarouselIndex >= maxIndex) {
+                videoCarouselIndex = 0;
+            } else {
+                videoCarouselIndex++;
+            }
+            
+            const scrollPercentage = (videoCarouselIndex / visibleItems) * 100;
+            videoCarousel.style.transform = `translateX(-${scrollPercentage}%)`;
+        }, 3000);
+    });
+});
+</script>
+@endpush

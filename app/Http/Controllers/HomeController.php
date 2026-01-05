@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\ElectronicMedia;
 use App\Models\PrintMedia;
-use App\Models\Media;
+use App\Models\PhotoGallery;
 
 class HomeController extends Controller
 {
@@ -18,13 +18,20 @@ class HomeController extends Controller
         $sliders = Slider::active()->ordered()->get();
         
         // Get latest electronic media (YouTube videos) - limit to 3 for carousel
-        $electronicMedia = ElectronicMedia::active()->ordered()->limit(3)->get();
+        $electronicMedia = ElectronicMedia::active()->ordered()->get();
         
         // Get latest print media - limit to 6 for grid
         $printMedia = PrintMedia::with('media')->active()->ordered()->limit(6)->get();
         
-        // Get latest photos from media gallery - limit to 8 for grid
-        $galleryPhotos = Media::images()->latest()->limit(8)->get();
+        // Get latest photos from photo gallery table - limit to 8 for grid
+        $galleryPhotos = PhotoGallery::with('media')
+            ->active()
+            ->whereHas('media', function ($query) {
+                $query->where('type', 'image');
+            })
+            ->ordered()
+            ->limit(8)
+            ->get();
         
         return view('home', compact('sliders', 'electronicMedia', 'printMedia', 'galleryPhotos'));
     }
