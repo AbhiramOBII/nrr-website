@@ -82,7 +82,7 @@
                             @forelse($otherScams as $other)
                             <a href="{{ route('scam-exposed.show', $other->slug) }}" 
                                class="flex items-center gap-3 p-3 rounded-lg hover:bg-red-50 transition-colors group">
-                                @if($other->featuredMedia)
+                                <!-- @if($other->featuredMedia)
                                 <img src="{{ $other->featuredMedia->url }}" 
                                      alt="{{ $other->title_en }}" 
                                      class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
@@ -90,7 +90,7 @@
                                 <div class="w-16 h-16 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center">
                                     <i class="fas fa-exclamation-triangle text-gray-400"></i>
                                 </div>
-                                @endif
+                                @endif -->
                                 <div class="flex-1 min-w-0">
                                     <h4 class="text-sm font-semibold text-gray-900 group-hover:text-red-600 transition-colors truncate">
                                         {{ $other->title }}
