@@ -19,7 +19,7 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
+                    <!-- <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th> -->
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Short Description</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
@@ -32,7 +32,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {{ $scam->sort_order }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <!-- <td class="px-6 py-4 whitespace-nowrap">
                         @if($scam->featuredMedia)
                         <img src="{{ $scam->featuredMedia->url }}" alt="{{ $scam->title_en }}" class="h-12 w-12 object-cover rounded-lg">
                         @else
@@ -40,15 +40,15 @@
                             <i class="fas fa-image text-gray-400"></i>
                         </div>
                         @endif
-                    </td>
+                    </td> -->
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-gray-900">{{ $scam->title_en }}</div>
+                        <div class="text-sm font-medium text-gray-900 text-wrap">{{ $scam->title_en }}</div>
                         @if($scam->title_kn)
-                        <div class="text-sm text-gray-500">{{ $scam->title_kn }}</div>
+                        <div class="text-sm text-gray-500 text-wrap">{{ $scam->title_kn }}</div>
                         @endif
                     </td>
                     <td class="px-6 py-4">
-                        <div class="text-sm text-gray-500 truncate max-w-xs">{{ Str::limit($scam->short_description_en, 60) }}</div>
+                        <div class="text-sm text-gray-500 text-wrap">{{ Str::limit($scam->short_description_en, 60) }}</div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $scam->status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
