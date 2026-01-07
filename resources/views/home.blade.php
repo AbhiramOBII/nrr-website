@@ -218,7 +218,7 @@
             </section>
 
         <!-- YouTube Videos Carousel Section -->
-        <section class="py-16 bg-gray-50">
+        <section class="py-16 bg-gray-50" style="background-color: #ffffffff; background-image: radial-gradient(circle at 2px 2px, rgba(225, 202, 202, 0.15) 2px, transparent 0); background-size: 20px 20px;">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-left mb-12">
                     <h2 class="text-3xl md:text-3xl lg:text-3xl font-bold text-primary mb-4">
@@ -302,7 +302,7 @@
         </section>
 
         <!-- Paper Clips Carousel Section -->
-        <section class="py-16 bg-gray-50">
+        <section class="py-16 bg-gray-50" style="background-image: radial-gradient(circle at 2px 2px, rgba(225, 202, 202, 0.15) 2px, transparent 0); background-size: 20px 20px;">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-left mb-12">
                     <h2 class="text-3xl md:text-3xl lg:text-3xl font-bold text-primary mb-4">
@@ -322,7 +322,7 @@
                         <div class="relative overflow-hidden">
                             <img src="{{ $item->media->url }}" 
                                  alt="{{ $item->title }}" 
-                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+                                 class="w-full h-[200px] object-contain group-hover:scale-105 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                         </div>
                         <div class="p-6">

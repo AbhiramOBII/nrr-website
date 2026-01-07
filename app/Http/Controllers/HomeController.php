@@ -21,7 +21,7 @@ class HomeController extends Controller
         $electronicMedia = ElectronicMedia::active()->ordered()->get();
         
         // Get latest print media - limit to 6 for grid
-        $printMedia = PrintMedia::with('media')->active()->ordered()->limit(6)->get();
+        $printMedia = PrintMedia::with('media')->active()->ordered()->limit(3)->get();
         
         // Get latest photos from photo gallery table - limit to 8 for grid
         $galleryPhotos = PhotoGallery::with('media')
