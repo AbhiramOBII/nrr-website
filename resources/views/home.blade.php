@@ -302,7 +302,7 @@
         </section>
 
         <!-- Paper Clips Carousel Section -->
-        <section class="py-16 bg-gray-50" style="background-image: radial-gradient(circle at 2px 2px, rgba(225, 202, 202, 0.15) 2px, transparent 0); background-size: 20px 20px;">
+        <section class="py-16 bg-gray-50" style="background-color: #e7dadaff; background-image: radial-gradient(circle at 2px 2px, rgba(222, 149, 149, 0.15) 2px, transparent 0); background-size: 20px 20px;">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-left mb-12">
                     <h2 class="text-3xl md:text-3xl lg:text-3xl font-bold text-primary mb-4">
