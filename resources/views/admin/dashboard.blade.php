@@ -48,7 +48,7 @@
                     </div>
                 </a>
 
-                <a href="#" 
+                <a href="{{ route('admin.settings.index') }}" 
                    class="flex items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors duration-200 group">
                     <div class="flex-shrink-0">
                         <i class="fas fa-cog text-purple-600 text-xl"></i>

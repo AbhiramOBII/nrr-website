@@ -14,6 +14,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\OfficialMediaController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\SiteSettingController;
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -158,8 +159,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/manage-enquiries', [AdminController::class, 'manageEnquiries'])->name('manage.enquiries');
         Route::get('/manage-newsletter', [AdminController::class, 'manageNewsletter'])->name('manage.newsletter');
         
-        // Keep settings route for header and dashboard references
-        Route::get('/settings', [AdminController::class, 'settings'])->name('settings');
+        // Site Settings Routes
+        Route::get('/settings', [SiteSettingController::class, 'index'])->name('settings.index');
+        Route::put('/settings', [SiteSettingController::class, 'update'])->name('settings.update');
         
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
     });
