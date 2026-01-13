@@ -121,7 +121,7 @@ class EventController extends Controller
     // Public methods
     public function publicIndex()
     {
-        $events = Event::active()->ordered()->with('featuredMedia')->paginate(12);
+        $events = Event::latest()->with('featuredMedia')->paginate(12);
         return view('pages.events.index', compact('events'));
     }
 

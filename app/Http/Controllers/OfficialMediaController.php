@@ -108,7 +108,7 @@ class OfficialMediaController extends Controller
 
     public function publicIndex()
     {
-        $officialMedia = OfficialMedia::active()->ordered()->with('media')->paginate(24);
+        $officialMedia = OfficialMedia::active()->latest()->with('media')->paginate(24);
         return view('pages.official-media', compact('officialMedia'));
     }
 }

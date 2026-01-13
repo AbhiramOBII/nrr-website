@@ -151,7 +151,7 @@ class MajorDevelopmentController extends Controller
      */
     public function publicIndex()
     {
-        $developments = MajorDevelopment::active()->with('featuredMedia')->ordered()->get();
+        $developments = MajorDevelopment::active()->with('featuredMedia')->latest()->get();
         return view('pages.major-developments-index', compact('developments'));
     }
 

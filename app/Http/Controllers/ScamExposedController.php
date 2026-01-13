@@ -151,7 +151,7 @@ class ScamExposedController extends Controller
      */
     public function publicIndex()
     {
-        $scams = ScamExposed::active()->ordered()->with('featuredMedia')->paginate(12);
+        $scams = ScamExposed::active()->latest()->with('featuredMedia')->paginate(12);
         return view('pages.scams-exposed', compact('scams'));
     }
 

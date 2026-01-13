@@ -89,7 +89,7 @@ class PrintMediaController extends Controller
     // Public method
     public function publicIndex()
     {
-        $printMedia = PrintMedia::active()->ordered()->with('media')->paginate(24);
+        $printMedia = PrintMedia::active()->latest()->with('media')->paginate(24);
         return view('pages.print-media', compact('printMedia'));
     }
 }

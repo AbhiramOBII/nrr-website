@@ -111,7 +111,7 @@ class BlogController extends Controller
 
     public function publicIndex()
     {
-        $blogs = Blog::active()->ordered()->with('featuredMedia')->paginate(12);
+        $blogs = Blog::latest()->with('featuredMedia')->paginate(12);
         return view('pages.blogs.index', compact('blogs'));
     }
 

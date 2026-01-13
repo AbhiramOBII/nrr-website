@@ -12,7 +12,7 @@ class PhotoGalleryController extends Controller
     {
         $galleryItems = PhotoGallery::active()
             ->with('media')
-            ->ordered()
+            ->latest()
             ->paginate(24);
         
         return view('pages.photo-gallery', compact('galleryItems'));

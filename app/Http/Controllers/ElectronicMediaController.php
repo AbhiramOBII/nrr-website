@@ -99,7 +99,7 @@ class ElectronicMediaController extends Controller
     // Public method
     public function publicIndex()
     {
-        $electronicMedia = ElectronicMedia::active()->ordered()->paginate(12);
+        $electronicMedia = ElectronicMedia::latest()->paginate(12);
         return view('pages.electronic-media', compact('electronicMedia'));
     }
 }
