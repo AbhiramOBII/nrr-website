@@ -10,7 +10,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('image/bjp-logo.svg') }}" alt="N. R. Ramesh Logo">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -32,7 +32,7 @@
                             <div class="mb-8">
                                 <div class="w-32 h-32 mx-auto rounded-full bg-header-orange p-1">
                                     <div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
-                                        <img src="{{ asset('image/logo-NRR.webp') }}" alt="N. R. Ramesh" class="w-24 h-24 object-cover rounded-full">
+                                        <img src="{{ asset('image/logo-NRRAMESH.png') }}" alt="N. R. Ramesh" class="w-24 h-24 object-cover rounded-full">
                                     </div>
                                 </div>
                             </div>
@@ -40,11 +40,11 @@
                             <!-- Brand Text -->
                             <div class="bg-primary/90 rounded-full px-8 py-3 inline-block mb-6">
                                 <h1 class="text-xl font-bold text-white">N R RAMESH OFFICIAL</h1>
-                                <p class="text-sm text-white/90">ನಮ್ಮ ಭವಿಷ್ಯ ಸುವಿಸ್</p>
+                                <!-- <p class="text-sm text-white/90">ನಮ್ಮ ಭವಿಷ್ಯ ಸುವಿಸ್</p> -->
                             </div>
                             
                             <!-- Setup Text -->
-                            <p class="text-white/80 text-sm">Setup Logo Here</p>
+                            <!-- <p class="text-white/80 text-sm">Setup Logo Here</p> -->
                         </div>
                     </div>
                     

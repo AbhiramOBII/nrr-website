@@ -21,14 +21,14 @@ class SuperAdminSeeder extends Seeder
             User::create([
                 'name' => 'Super Administrator',
                 'email' => 'admin@nrramesh.com',
-                'password' => Hash::make('Admin@123'),
+                'password' => Hash::make('EmpowerNRR1234$#@!'),
                 'is_admin' => true,
                 'email_verified_at' => now(),
             ]);
             
             $this->command->info('Super Administrator created successfully!');
             $this->command->info('Email: admin@nrramesh.com');
-            $this->command->info('Password: Admin@123');
+            $this->command->info('Password: EmpowerNRR1234$#@!');
         } else {
             // Update existing user to be admin if not already
             if (!$existingAdmin->is_admin) {
