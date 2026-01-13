@@ -54,14 +54,14 @@ Route::get('/official-media', [OfficialMediaController::class, 'publicIndex'])->
 Route::get('/blogs', [BlogController::class, 'publicIndex'])->name('blogs.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
+// Admin Login Routes (outside admin prefix for security)
+Route::middleware('guest')->group(function () {
+    Route::get('/empower', [AdminController::class, 'showLogin'])->name('admin.login');
+    Route::post('/empower', [AdminController::class, 'login']);
+});
+
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
-    // Guest routes (not authenticated)
-    Route::middleware('guest')->group(function () {
-        Route::get('/login', [AdminController::class, 'showLogin'])->name('login');
-        Route::post('/login', [AdminController::class, 'login']);
-    });
-    
     // Protected routes (authenticated admin only)
     Route::middleware(['auth', App\Http\Middleware\AdminMiddleware::class])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
