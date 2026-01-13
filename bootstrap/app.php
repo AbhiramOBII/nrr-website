@@ -16,7 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         
         // Configure authentication redirects
-        $middleware->redirectGuestsTo('empower');
+        $middleware->redirectGuestsTo('empower/login');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

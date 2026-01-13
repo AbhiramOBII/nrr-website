@@ -56,8 +56,8 @@ Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 // Admin Login Routes (outside admin prefix for security)
 Route::middleware('guest')->group(function () {
-    Route::get('/empower', [AdminController::class, 'showLogin'])->name('admin.login');
-    Route::post('/empower', [AdminController::class, 'login']);
+    Route::get('/empower/login', [AdminController::class, 'showLogin'])->name('admin.login');
+    Route::post('/empower/login', [AdminController::class, 'login']);
 });
 
 // Admin Routes
