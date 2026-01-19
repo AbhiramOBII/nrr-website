@@ -1,46 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N. R. Ramesh - Results Over Rhetoric</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Apply Baloo Tamma font to Kannada text */
-        html[lang="kn"] body {
-            font-family: 'Baloo Tamma 2', 'Satoshi', sans-serif;
-        }
-        
-        /* Reduce font size for Kannada in header navigation */
-        html[lang="kn"] header nav a,
-        html[lang="kn"] header nav button {
-            font-size: 0.875rem !important; /* 14px instead of 16px */
-        }
-        
-        /* Adjust logo text size for Kannada */
-        html[lang="kn"] header h1 {
-            font-size: 1.5rem !important; /* Smaller than default */
-        }
-        
-        @media (min-width: 768px) {
-            html[lang="kn"] header h1 {
-                font-size: 1.875rem !important; /* Smaller than default */
-            }
-        }
-        
-        /* Adjust dropdown menu text for Kannada */
-        html[lang="kn"] .group-hover\:opacity-100 h3,
-        html[lang="kn"] .group-hover\:opacity-100 a {
-            font-size: 0.8125rem !important; /* 13px */
-        }
-    </style>
-</head>
-<body class="bg-bg-cream font-satoshi min-h-screen overflow-x-hidden">
-    <!-- Top Bar -->
+<!-- Top Bar -->
     <div class="bg-primary text-white py-2 text-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
@@ -107,7 +65,7 @@
     </a>
 
     <!-- Header -->
-    <header class="bg-header-orange border-b border-dark-shade sticky top-0 z-40" role="banner">
+    <header class="bg-header-orange sticky top-0 z-40" role="banner">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-3">
                 <!-- Logo -->
@@ -151,32 +109,32 @@
                             </button>
                             <!-- Enhanced Dropdown Menu -->
                             <div class="absolute top-full left-0 mt-3 w-48 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
-                                <div class="bg-gradient-to-r from-blue-500 to-cyan-600 px-4 py-3">
+                                <div class="bg-primary px-4 py-3">
                                     <h3 class="text-white font-semibold text-sm">{{ __('messages.media_coverage') }}</h3>
                                 </div>
                                 <div class="py-2">
-                                    <a href="{{ route('events.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
-                                        <i class="fas fa-calendar-alt w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
+                                    <a href="{{ route('events.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-primary transition-all duration-200">
+                                        <i class="fas fa-calendar-alt w-4 h-4 mr-3 text-primary group-hover/item:text-primary"></i>
                                         {{ __('messages.events') }}
                                     </a>
-                                    <a href="{{ route('print-media.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
-                                        <i class="fas fa-newspaper w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
+                                    <a href="{{ route('print-media.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-primary transition-all duration-200">
+                                        <i class="fas fa-newspaper w-4 h-4 mr-3 text-primary group-hover/item:text-primary"></i>
                                         {{ __('messages.print_media') }}
                                     </a>
-                                    <a href="{{ route('photo-gallery.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
-                                        <i class="fas fa-images w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
+                                    <a href="{{ route('photo-gallery.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-primary transition-all duration-200">
+                                        <i class="fas fa-images w-4 h-4 mr-3 text-primary group-hover/item:text-primary"></i>
                                         {{ __('messages.photo_gallery') }}
                                     </a>
-                                    <a href="{{ route('electronic-media.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
-                                        <i class="fab fa-youtube w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
+                                    <a href="{{ route('electronic-media.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-primary transition-all duration-200">
+                                        <i class="fab fa-youtube w-4 h-4 mr-3 text-primary group-hover/item:text-primary"></i>
                                         {{ __('messages.electronic_media') }}
                                     </a>
-                                    <a href="{{ route('official-media.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
-                                        <i class="fas fa-bullhorn w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
+                                    <a href="{{ route('official-media.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-primary transition-all duration-200">
+                                        <i class="fas fa-bullhorn w-4 h-4 mr-3 text-primary group-hover/item:text-primary"></i>
                                         {{ __('messages.official_media') }}
                                     </a>
-                                    <a href="{{ route('blogs.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 hover:text-blue-700 transition-all duration-200">
-                                        <i class="fas fa-blog w-4 h-4 mr-3 text-blue-500 group-hover/item:text-blue-700"></i>
+                                    <a href="{{ route('blogs.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-primary transition-all duration-200">
+                                        <i class="fas fa-blog w-4 h-4 mr-3 text-primary group-hover/item:text-primary"></i>
                                         {{ __('messages.blogs') }}
                                     </a>
                                 </div>

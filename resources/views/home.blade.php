@@ -88,7 +88,7 @@
         </section>
 
         <!-- About N.R. Ramesh Section -->
-        <section class="py-32 bg-white">
+        <section class="py-16 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     <!-- Image Column (5/12) -->
@@ -117,16 +117,14 @@
                                     {!! __('messages.about_intro_2') !!}
                                 </p>
                             </div>
-                            
-                        
-                            
+
                             <!-- Call to Action -->
                             <div class="flex flex-col sm:flex-row gap-4 mt-8">
-                                <button class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 transition-all duration-200 transform hover:scale-105">
+                                <!-- <button class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 transition-all duration-200 transform hover:scale-105">
                                     {{ __('messages.learn_more_vision') }}
-                                </button>
+                                </button> -->
                                 <button class="bg-transparent border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 transition-all duration-200">
-                                    {{ __('messages.view_achievements') }}
+                                    <a href="{{ route('major-developments.public') }}">{{ __('messages.view_achievements') }}</a>
                                 </button>
                             </div>
                         </div>
@@ -139,7 +137,7 @@
 
 
             <!-- Impact Counter Section -->
-            <section class="py-16 bg-white relative overflow-hidden">
+            <section class="py-16 relative overflow-hidden"  style="background-color: #e7dadaff;">
                 <!-- Background Pattern -->
                 <div class="absolute inset-0 opacity-5">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full translate-x-32 -translate-y-32"></div>

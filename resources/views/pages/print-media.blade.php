@@ -3,7 +3,7 @@
 @section('content')
 <main id="main-content" class="min-h-screen">
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-r from-gray-700 to-gray-900 py-16 md:py-20">
+    <section class="relative bg-[#3B7080] py-12 md:py-12">
         <div class="absolute inset-0 bg-black/20"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
@@ -14,7 +14,7 @@
     </section>
 
     <!-- Print Media Grid -->
-    <section class="py-12 md:py-16">
+    <section class="py-12 md:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             @if($printMedia->count() > 0)
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -42,7 +42,7 @@
             </div>
             @endif
             @else
-            <div class="text-center py-16">
+            <div class="text-center py-12">
                 <i class="fas fa-newspaper text-6xl text-gray-300 mb-4"></i>
                 <p class="text-gray-500 text-lg">{{ __('messages.no_print_media_found') }}</p>
             </div>

@@ -3,7 +3,7 @@
 @section('content')
 <main id="main-content" class="min-h-screen">
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-r from-purple-600 to-pink-700 py-16 md:py-20">
+    <section class="relative bg-[#3B7080] py-12 md:py-12">
         <div class="absolute inset-0 bg-black/20"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
@@ -14,7 +14,7 @@
     </section>
 
     <!-- Gallery Grid -->
-    <section class="py-12 md:py-16">
+    <section class="py-12 md:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             @if($galleryItems->count() > 0)
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -44,7 +44,7 @@
             </div>
             @endif
             @else
-            <div class="text-center py-16">
+            <div class="text-center py-12">
                 <i class="fas fa-images text-6xl text-gray-300 mb-4"></i>
                 <p class="text-gray-500 text-lg">{{ __('messages.no_media_found') }}</p>
             </div>

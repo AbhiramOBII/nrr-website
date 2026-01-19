@@ -23,6 +23,10 @@ return [
     'no_developments_yet' => 'ಇನ್ನೂ ಯಾವುದೇ ಅಭಿವೃದ್ಧಿಗಳಿಲ್ಲ',
     'no_scams_yet' => 'ಇನ್ನೂ ಯಾವುದೇ ಹಗರಣಗಳು ಬಹಿರಂಗವಾಗಿಲ್ಲ',
     'name' => 'ಎನ್. ಆರ್. ರಮೇಶ್',
+    'twitter' => 'ಟ್ವಿಟ್ಟರ್',
+    'facebook' => 'ಫೇಸ್ಬುಕ್',
+    'youtube' => 'ಯೂಟ್ಯೂಬ್',
+    'instagram' => 'ಇಂಸ್ಟಾಗ್ರಾಮ್',
     
     // Slider buttons
     'learn_more' => 'ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ',

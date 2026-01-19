@@ -2,13 +2,13 @@
 
 @section('content')
 <main id="main-content" class="min-h-screen">
-    <section class="relative bg-gradient-to-r from-indigo-600 to-purple-700 py-16 md:py-24">
+    <section class="relative bg-[#3B7080] py-12 md:py-12">
         <div class="absolute inset-0 bg-black/20"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
-                <span class="inline-block px-4 py-1 bg-white/20 rounded-full text-white text-sm font-medium mb-4">
+                <!-- <span class="inline-block px-4 py-1 bg-white/20 rounded-full text-white text-sm font-medium mb-4">
                     {{ __('messages.major_development_label') }}
-                </span>
+                </span> -->
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">
                     {{ __('messages.major_development') }}
                 </h1>

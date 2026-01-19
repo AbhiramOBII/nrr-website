@@ -23,6 +23,10 @@ return [
     'no_developments_yet' => 'No developments yet',
     'no_scams_yet' => 'No scams exposed yet',
     'name' => 'N. R. Ramesh',
+    'twitter' => 'Twitter',
+    'facebook' => 'Facebook',
+    'youtube' => 'Youtube',
+    'instagram' => 'Instagram',
     
     // Slider buttons
     'learn_more' => 'Learn More',
