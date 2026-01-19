@@ -480,7 +480,8 @@
                 @if($galleryPhotos->count() > 0)
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     @foreach($galleryPhotos as $photo)
-                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('{{ $photo->media->url }}', '{{ addslashes($photo->media->name) }}', '{{ addslashes($photo->media->alt_text ?? '') }}')">
+                    <!-- '{{ addslashes($photo->media->name) }}', removed name from lightbox -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer" onclick="openLightbox('{{ $photo->media->url }}', '{{ addslashes($photo->media->alt_text ?? '') }}')">
                         <img src="{{ $photo->media->url }}" alt="{{ $photo->media->alt_text ?? $photo->media->name }}" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
