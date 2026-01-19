@@ -96,7 +96,7 @@ const galleryItems = [
     @if($mediaItem)
     {
         url: '{{ $mediaItem->url }}',
-        name: '{{ addslashes($mediaItem->alt_text ?? $mediaItem->name) }}',
+        // name: '{{ addslashes($mediaItem->alt_text ?? $mediaItem->name) }}',
         type: '{{ $mediaItem->isVideo() ? "video" : "image" }}'
     },
     @endif

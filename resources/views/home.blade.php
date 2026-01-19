@@ -484,7 +484,7 @@
                         <img src="{{ $photo->media->url }}" alt="{{ $photo->media->alt_text ?? $photo->media->name }}" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-lg font-bold mb-1">{{ $photo->media->name }}</h3>
+                            <!-- <h3 class="text-lg font-bold mb-1">{{ $photo->media->name }}</h3> -->
                             @if($photo->media->alt_text)
                             <p class="text-sm text-white/90">{{ $photo->media->alt_text }}</p>
                             @endif
